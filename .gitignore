@@ -18,26 +18,29 @@ Thumbs.db
 .env.*.local
 
 # Ignore build output for each Next.js project
-project1/.next/
-project1/out/
-project1/node_modules/
-project1/.env
-project1/.env.local
-project1/.env.*.local
+ui/.next/
+ui/.next/dev
+ui/out/
+ui/node_modules/
+ui/.env
+ui/.env.local
+ui/.env.*.local
 
-project2/.next/
-project2/out/
-project2/node_modules/
-project2/.env
-project2/.env.local
-project2/.env.*.local
+landing-corralon/.next/
+landing-corralon/.next/dev
+landing-corralon/out/
+landing-corralon/node_modules/
+landing-corralon/.env
+landing-corralon/.env.local
+landing-corralon/.env.*.local
 
-project3/.next/
-project3/out/
-project3/node_modules/
-project3/.env
-project3/.env.local
-project3/.env.*.local
+landing-supermercado/.next/
+landing-supermercado/.next/dev
+landing-supermercado/out/
+landing-supermercado/node_modules/
+landing-supermercado/.env
+landing-supermercado/.env.local
+landing-supermercado/.env.*.local
 
 # Ignore coverage and test output
 coverage/
