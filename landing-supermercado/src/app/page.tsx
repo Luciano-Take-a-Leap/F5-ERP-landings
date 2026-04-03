@@ -1,4 +1,5 @@
-import { Button, Hero } from '@ui';
+import { Button } from '@ui';
+import Hero from '@ui/Hero';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
               profesionalizar
             </p>
             <p className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              supermercados y almacenes{' '}
+              supermercados y almacenes
             </p>
           </span>
         }
