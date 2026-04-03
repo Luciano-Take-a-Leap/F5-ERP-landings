@@ -1,5 +1,6 @@
 # Ignore root node_modules
 /node_modules/
+/node_modules/bin/
 
 # Ignore logs
 logs

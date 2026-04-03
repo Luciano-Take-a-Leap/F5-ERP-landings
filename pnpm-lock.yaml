@@ -14,6 +14,9 @@ importers:
 
   landing-corralon:
     dependencies:
+      '@ui':
+        specifier: workspace:*
+        version: link:../ui
       next:
         specifier: 16.2.2
         version: 16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -36,9 +39,6 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.2.3(@types/react@19.2.14)
-      '@ui':
-        specifier: workspace:*
-        version: link:../ui
       eslint:
         specifier: ^9
         version: 9.39.4(jiti@2.6.1)
