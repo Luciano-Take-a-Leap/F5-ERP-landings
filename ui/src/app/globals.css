@@ -48,9 +48,6 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ─── Tokens por defecto ─────────────────────────────────────
-   Cada landing los sobreescribe en su propio globals.css
-   ─────────────────────────────────────────────────────────── */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
