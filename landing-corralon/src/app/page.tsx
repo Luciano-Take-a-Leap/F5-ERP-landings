@@ -1,4 +1,6 @@
-import { Button, Hero } from '@ui';
+import { Button } from '@ui';
+import Hero from '@ui/Hero';
+import TestimonialsSection from '@ui/TestimonialsSection';
 
 export default function Home() {
   return (
@@ -22,6 +24,7 @@ export default function Home() {
         backgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
         mobileBackgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
       />
+      <TestimonialsSection title="What our customers say" cards={[]} />
     </div>
   );
 }
