@@ -1,0 +1,50 @@
+# Ignore root node_modules
+/node_modules/
+
+# Ignore logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore build output for each Next.js project
+project1/.next/
+project1/out/
+project1/node_modules/
+project1/.env
+project1/.env.local
+project1/.env.*.local
+
+project2/.next/
+project2/out/
+project2/node_modules/
+project2/.env
+project2/.env.local
+project2/.env.*.local
+
+project3/.next/
+project3/out/
+project3/node_modules/
+project3/.env
+project3/.env.local
+project3/.env.*.local
+
+# Ignore coverage and test output
+coverage/
+*.lcov
+
+# Ignore editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
