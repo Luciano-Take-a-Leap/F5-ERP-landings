@@ -1,4 +1,3 @@
-import { Button } from './components/ui/button';
-import Hero from './components/Hero';
-
-export { Button, Hero };
+export * from './components/ui/button';
+export * from './components/Hero';
+export * from './components/TestimonialsSection';
