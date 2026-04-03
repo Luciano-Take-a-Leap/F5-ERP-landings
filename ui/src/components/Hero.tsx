@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({
   button,
 }) => {
   return (
-    <div className="relative w-full h-[80vh] flex items-center justify-center">
+    <div className="relative w-full md:max-h-[640px] h-[80vh] flex items-center justify-center">
       <Image
         src={backgroundImage}
         alt="Hero Background"
@@ -31,10 +31,10 @@ const Hero: React.FC<HeroProps> = ({
         fill
         className="object-cover md:hidden"
       />
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black" />
       <div className="relative z-10 text-center text-white px-4  flex flex-col items-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
-        <p className="text-lg md:text-xl mb-8">{description}</p>
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-4">{title}</h1>
+        <p className="text-lg md:text-xl mb-12 max-w-lg">{description}</p>
         {button}
       </div>
     </div>
