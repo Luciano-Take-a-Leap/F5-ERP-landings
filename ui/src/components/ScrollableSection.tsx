@@ -89,9 +89,20 @@ const ScrollableSection = ({ tag, title, subsections }: ScrollableSectionProps) 
               <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
                 {subsection.description}
               </p>
+              {subsection.image && (
+                <div className="relative w-full h-56 lg:hidden">
+                  <Image
+                    src={subsection.image}
+                    fill
+                    alt={subsection.title}
+                    className="rounded-xl object-cover"
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
+
         <div className="hidden w-[45%] lg:block">
           <div className="sticky top-[20vh] w-full h-[50vh]">
             {currentImage ? (
