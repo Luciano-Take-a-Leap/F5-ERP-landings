@@ -61,14 +61,14 @@ function DuplexSection({
     );
 
   const TextBlock = () => (
-    <div className="flex flex-col gap-4 max-w-[70%]">
+    <div className="flex flex-col gap-4 md:max-w-[70%]">
       {textSection}
       {ctaButton && <div>{ctaButton}</div>}
     </div>
   );
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-12 px-4 md:px-0">
       {tag}
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
         {title}
