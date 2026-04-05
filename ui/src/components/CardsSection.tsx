@@ -17,7 +17,7 @@ const CardSection: React.FC<CardSectionProps> = ({
   cards,
 }) => {
   return (
-    <section className="w-full bg-black px-6 py-20 md:px-10 lg:px-16">
+    <section className="w-full bg-black px-6 py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
             <h3>{tag}</h3>
