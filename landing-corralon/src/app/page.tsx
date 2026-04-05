@@ -1,3 +1,4 @@
+'use client';
 import CardSection from '@ui/CardsSection';
 import FullWidthText from '@ui/FullWidthText';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -8,6 +9,7 @@ import Hero from '@ui/Hero';
 import ScrollableSection from '@ui/ScrollableSection';
 import Tag from '@ui/Tag';
 import TestimonialsSection from '@ui/TestimonialsSection';
+import Header from '@ui/Header';
 
 export default function Home() {
   const contentCards = [
@@ -47,8 +49,23 @@ export default function Home() {
         'Muchos pasos para vender y sistemas poco intuitivos. Perdés mucho tiempo en el mostrador.',
     },
   ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black">
+    <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black relative">
+      <Header
+        logo="/icon.png"
+        menuItems={[
+          { label: 'Soluciones', onClick: () => {} },
+          { label: 'Integraciones', onClick: () => {} },
+          { label: 'Clientes', onClick: () => {} },
+          { label: 'FAQ', onClick: () => {} },
+        ]}
+        ctaButton={
+          <Button className="font-extrabold p-5" size="lg">
+            Agenda una reunión
+          </Button>
+        }
+      />
       <Hero
         title={
           <span>
