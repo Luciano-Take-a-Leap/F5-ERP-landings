@@ -10,6 +10,7 @@ import ScrollableSection from '@ui/ScrollableSection';
 import Tag from '@ui/Tag';
 import TestimonialsSection from '@ui/TestimonialsSection';
 import Header from '@ui/Header';
+import TestimonialCard from '@ui/TestimonialCard';
 
 export default function Home() {
   const contentCards = [
@@ -89,7 +90,7 @@ export default function Home() {
         backgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
         mobileBackgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
       />
-      <div className="max-w-7xl">
+      <div className="max-w-7xl w-full">
         <FullWidthText>
           <div className="mx-auto max-w-5xl px-4 text-center">
             <h2 className="text-3xl leading-tight text-white sm:text-4xl d:text-6xl">
@@ -108,7 +109,6 @@ export default function Home() {
           subtitle={'Y eso te está frenando el crecimiento de tu empresa'}
           cards={contentCards}
         />
-        <TestimonialsSection title="What our customers say" cards={[]} />
         <ScrollableSection
           tag={<Tag text="LA SOLUCIÓN" variant="outline" />}
           title="Con F5 te ayudamos a que recuperes el control de tu negocio en un solo lugar"
@@ -172,6 +172,63 @@ export default function Home() {
               </p>
             </span>
           }
+        />
+      </div>
+      <div className="w-full max-w-[1600px]">
+        <TestimonialsSection
+          title="Lo que dicen nuestros clientes"
+          cards={[
+            <TestimonialCard
+              key="Testimonial_1"
+              author={{
+                name: 'Juan Dalmiro',
+                role: 'Dueño de Corralón El Norte',
+                avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+              }}
+              rate={5}
+              text="F5 cambió radicalmente la forma en que controlamos el stock. Antes era un caos, ahora sabemos exactamente qué tenemos en cada depósito en tiempo real."
+            />,
+            <TestimonialCard
+              key="Testimonial_2"
+              author={{
+                name: 'Marta López',
+                role: 'Gerente Administrativa, Constru-Materiales',
+                avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+              }}
+              rate={4}
+              text="La integración con AFIP y la facilidad para manejar cuentas corrientes es lo que más valoramos. El soporte técnico siempre está cuando lo necesitamos."
+            />,
+            <TestimonialCard
+              key="Testimonial_3"
+              author={{
+                name: 'Carlos Rodríguez',
+                role: 'Propietario, Ferretería Central',
+                avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+              }}
+              rate={5}
+              text="La solución de F5 nos ha permitido automatizar procesos que antes eran manuales y propensos a errores. La eficiencia en la gestión del inventario es increíble."
+            />,
+            <TestimonialCard
+              key="Testimonial_4"
+              author={{
+                name: 'Lucía Gómez',
+                role: 'Encargada de Ventas, Materiales Gómez',
+                avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+              }}
+              rate={3}
+              text="La curva de aprendizaje fue rápida y el equipo de soporte nos acompañó en cada paso. Ahora podemos enfocarnos en hacer crecer nuestro negocio en lugar de preocuparnos por la gestión diaria."
+            />,
+            <TestimonialCard
+              key="Testimonial_5"
+              author={{
+                name: 'Miguel Fernández',
+                role: 'Dueño, Corralón Fernández',
+                avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+              }}
+              rate={5}
+              text="Recomendaría F5 a cualquier corralón o ferretería que quiera profesionalizar su gestión. Es una inversión que se paga sola con el tiempo que ahorra y la mejora en la organización."
+            />,
+          ]}
         />
       </div>
     </div>
