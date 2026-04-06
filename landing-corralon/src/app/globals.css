@@ -1,18 +1,17 @@
 @import 'tailwindcss';
 @import '@ui/src/app/globals.css';
 @source "../../../ui/src";
-
 :root {
-  --primary: #00e6bb;
-  --primary-foreground: #000000;
-  --primary-dark: #009376;
+  --primary: #007bff;
+  --primary-foreground: #ffffff;
+  --primary-dark: #0056b3;
 
   --background: #000000;
   --card-dark-background: #18181b;
-  --card-from: #00e6bc10;
-  --card-to: #00e6bc00;
+  --card-from: #007bff10;
+  --card-to: #007bff00;
 
-  --icon-bg: #00261f;
+  --icon-bg: #001f3f;
   --icon-color: var(--primary);
 
   --foreground: #ffffff;

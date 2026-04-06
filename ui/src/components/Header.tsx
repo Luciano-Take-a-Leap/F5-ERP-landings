@@ -98,12 +98,6 @@ const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
             </button>
           ))}
         </nav>
-
-        <div className="px-5 py-6 border-t border-white/10">
-          <div onClick={closeDrawer} className="w-full">
-            {ctaButton}
-          </div>
-        </div>
       </div>
     </>
   );
