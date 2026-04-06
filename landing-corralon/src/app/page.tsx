@@ -1,10 +1,97 @@
+'use client';
+import CardSection from '@ui/CardsSection';
+import FullWidthText from '@ui/FullWidthText';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Archive03Icon, Clock01Icon, TradeDownIcon } from '@hugeicons/core-free-icons';
 import { Button } from '@ui';
+import DuplexSection from '@ui/DuplexSection';
 import Hero from '@ui/Hero';
+import ScrollableSection from '@ui/ScrollableSection';
+import Tag from '@ui/Tag';
 import TestimonialsSection from '@ui/TestimonialsSection';
+import Header from '@ui/Header';
+import TestimonialCard from '@ui/TestimonialCard';
+import Faq from '@ui/Faq';
+import Footer from '@ui/Footer';
 
 export default function Home() {
+  const contentCards = [
+    {
+      icon: <HugeiconsIcon icon={Clock01Icon} />,
+      title: 'El stock no coincide',
+      description:
+        'Figuran productos que no están y vendés productos que no tenés. Y al mismo tiempo, perdés ventas por no saber qué hay.',
+    },
+    {
+      icon: <HugeiconsIcon icon={Archive03Icon} />,
+      title: 'Desorden en entregas, pedidos y acopios',
+      description: 'No sabés qué pedidos hay que entregar.',
+    },
+    {
+      icon: <HugeiconsIcon icon={TradeDownIcon} />,
+      title: 'Precios desactualizados o mal cargados',
+      description:
+        'Cambiar listas es un dolor de cabeza y terminás vendiendo con márgenes incorrectos.',
+    },
+    {
+      icon: <HugeiconsIcon icon={Clock01Icon} />,
+      title: 'Ausencia de información',
+      description:
+        'No sabés si estás ganando o perdiendo plata. Y lo más importante: no podés confiar en la información del sistema para tomar decisiones.',
+    },
+    {
+      icon: <HugeiconsIcon icon={Archive03Icon} />,
+      title: 'Todo depende del dueño',
+      description:
+        'Si no estás, el negocio no funciona. No podés delegar ni tomarte tiempo para crecer o descansar.',
+    },
+    {
+      icon: <HugeiconsIcon icon={TradeDownIcon} />,
+      title: 'Ventas lentas y procesos complicados',
+      description:
+        'Muchos pasos para vender y sistemas poco intuitivos. Perdés mucho tiempo en el mostrador.',
+    },
+  ];
+
+  const faqContent = [
+    {
+      questions: '¿Cuánto tiempo tarda la implementación?',
+      answer:
+        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    },
+    {
+      questions: '¿Puedo migrar mis datos de Excel?',
+      answer:
+        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    },
+    {
+      questions: '¿El sistema funciona sin internet?',
+      answer:
+        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    },
+    {
+      questions: '¿Tienen soporte técnico local?',
+      answer:
+        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black">
+    <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black relative">
+      <Header
+        logo="/icon.png"
+        menuItems={[
+          { label: 'Soluciones', onClick: () => {} },
+          { label: 'Integraciones', onClick: () => {} },
+          { label: 'Clientes', onClick: () => {} },
+          { label: 'FAQ', onClick: () => {} },
+        ]}
+        ctaButton={
+          <Button className="font-extrabold p-5" size="lg">
+            Agenda una reunión
+          </Button>
+        }
+      />
       <Hero
         title={
           <span>
@@ -28,7 +115,158 @@ export default function Home() {
         backgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
         mobileBackgroundImage="https://as2.ftcdn.net/v2/jpg/03/39/67/57/1000_F_339675724_zKIsiEcSss6x2KOXUfHMfBrK9b0qbYCQ.jpg"
       />
-      <TestimonialsSection title="What our customers say" cards={[]} />
+      <div className="max-w-7xl w-full">
+        <FullWidthText>
+          <div className="mx-auto max-w-5xl px-4 text-center">
+            <h2 className="text-3xl leading-tight text-white sm:text-4xl d:text-6xl">
+              <span className="text-white font-extrabold">+180</span>{' '}
+              <span className="text-white">
+                Pymes en el norte de Argentina usan F5 para odenar su negocio.
+              </span>{' '}
+              <span className="text-primary font-extrabold">Sumate</span>
+            </h2>
+          </div>
+        </FullWidthText>
+
+        <CardSection
+          tag={<Tag text="EL PROBLEMA" variant="outline" />}
+          title={'La falta de control sobre tu negocio, te cuesta mucha plata'}
+          subtitle={'Y eso te está frenando el crecimiento de tu empresa'}
+          cards={contentCards}
+        />
+        <ScrollableSection
+          tag={<Tag text="LA SOLUCIÓN" variant="outline" />}
+          title="Con F5 te ayudamos a que recuperes el control de tu negocio en un solo lugar"
+          subsections={[
+            {
+              title: 'Gestión manual y desorganizada',
+              description:
+                'Muchos corralones y ferreterías aún dependen de métodos tradicionales como papel y lápiz para llevar el control de inventarios, ventas y finanzas, lo que resulta en errores, pérdida de información y falta de eficiencia.',
+              image:
+                'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/louis-hansel-Rf9eElW3Qxo-unsplash.jpg',
+            },
+            {
+              title: 'Dificultad para competir',
+              description:
+                'La falta de digitalización limita la capacidad de los corralones y ferreterías para competir con empresas más grandes y tecnológicamente avanzadas, lo que puede resultar en pérdida de clientes y oportunidades de crecimiento.',
+              image:
+                'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/pexels-pixabay-162534-600x400.jpg',
+            },
+            {
+              title: 'Falta de visibilidad y control',
+              description:
+                'Sin un sistema digital, los propietarios y gerentes de corralones y ferreterías carecen de visibilidad en tiempo real sobre sus operaciones, lo que dificulta la toma de decisiones informadas y la identificación de áreas de mejora.',
+              image:
+                'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/pexels-lisa-1301856-600x400.jpg',
+            },
+          ]}
+        />
+        <DuplexSection
+          tag={<Tag text="DIFERENCIAL" variant="outline" />}
+          title="Una suite completa diseñada para el sector de la construcción"
+          images={[
+            'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/louis-hansel-Rf9eElW3Qxo-unsplash.jpg',
+            'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/pexels-pixabay-162534-600x400.jpg',
+            'https://ferreteriamlo.com.ar/wp-content/uploads/2022/01/pexels-lisa-1301856-600x400.jpg',
+          ]}
+          ctaButton={
+            <Button className="font-extrabold p-5" size="lg">
+              Agenda una reunión
+            </Button>
+          }
+          textSection={
+            <span>
+              <h6 className="text-xl font-bold mb-1">
+                Mové el stock con remitos para hacer entregas parciales
+              </h6>
+              <p className="text-sm mb-4 opacity-70">
+                Hacé entregas por partes y mantené un registro preciso del stock real.
+              </p>
+              <h6 className="text-xl font-bold mb-1">
+                Estructura de artículos pensada para materiales
+              </h6>
+              <p className="text-sm mb-4 opacity-70">
+                Manejá unidades de medida, bultos y pallets sin complicaciones.
+              </p>
+              <h6 className="text-xl font-bold mb-1">
+                Sincronización de precios con proveedores
+              </h6>
+              <p className="text-sm mb-4 opacity-70">
+                Actualizá tus listas de precios automáticamente con tus proveedores
+                principales.
+              </p>
+            </span>
+          }
+        />
+      </div>
+      <div className="w-full max-w-[1600px]">
+        <TestimonialsSection
+          title="Lo que dicen nuestros clientes"
+          cards={[
+            <TestimonialCard
+              key="Testimonial_1"
+              author={{
+                name: 'Juan Dalmiro',
+                role: 'Dueño de Corralón El Norte',
+                avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+              }}
+              rate={5}
+              text="F5 cambió radicalmente la forma en que controlamos el stock. Antes era un caos, ahora sabemos exactamente qué tenemos en cada depósito en tiempo real."
+            />,
+            <TestimonialCard
+              key="Testimonial_2"
+              author={{
+                name: 'Marta López',
+                role: 'Gerente Administrativa, Constru-Materiales',
+                avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+              }}
+              rate={4}
+              text="La integración con AFIP y la facilidad para manejar cuentas corrientes es lo que más valoramos. El soporte técnico siempre está cuando lo necesitamos."
+            />,
+            <TestimonialCard
+              key="Testimonial_3"
+              author={{
+                name: 'Carlos Rodríguez',
+                role: 'Propietario, Ferretería Central',
+                avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+              }}
+              rate={5}
+              text="La solución de F5 nos ha permitido automatizar procesos que antes eran manuales y propensos a errores. La eficiencia en la gestión del inventario es increíble."
+            />,
+            <TestimonialCard
+              key="Testimonial_4"
+              author={{
+                name: 'Lucía Gómez',
+                role: 'Encargada de Ventas, Materiales Gómez',
+                avatar: 'https://randomuser.me/api/portraits/women/4.jpg',
+              }}
+              rate={3}
+              text="La curva de aprendizaje fue rápida y el equipo de soporte nos acompañó en cada paso. Ahora podemos enfocarnos en hacer crecer nuestro negocio en lugar de preocuparnos por la gestión diaria."
+            />,
+            <TestimonialCard
+              key="Testimonial_5"
+              author={{
+                name: 'Miguel Fernández',
+                role: 'Dueño, Corralón Fernández',
+                avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+              }}
+              rate={5}
+              text="Recomendaría F5 a cualquier corralón o ferretería que quiera profesionalizar su gestión. Es una inversión que se paga sola con el tiempo que ahorra y la mejora en la organización."
+            />,
+          ]}
+        />
+        <Faq title="Preguntas frecuentes" items={faqContent} />
+      </div>
+        <Footer
+          icon="/footer-icon.png"
+          name="F5 ERP"
+          navItems={[
+            { label: 'Términos', onClick: () => {} },
+            { label: 'Privacidad', onClick: () => {} },
+            { label: 'Contacto', onClick: () => {} },
+          ]}
+          copyRightText="© 2024 F5 ERP. Todos los derechos reservados."
+        />
     </div>
   );
 }
