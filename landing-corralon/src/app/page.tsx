@@ -16,6 +16,7 @@ import TestimonialsSection from "@ui/TestimonialsSection";
 import Header from "@ui/Header";
 import TestimonialCard from "@ui/TestimonialCard";
 import Faq from "@ui/Faq";
+import Footer from "@ui/Footer";
 
 export default function Home() {
   const contentCards = [
@@ -256,6 +257,16 @@ export default function Home() {
           ]}
         />
         <Faq title="Preguntas frecuentes" items={faqContent} />
+         <Footer
+        icon="/footer-icon.png"
+        name="F5 ERP"
+       navItems={[
+          { label: "Términos", onClick: () => {} },
+          { label: "Privacidad", onClick: () => {} },
+          { label: "Contacto", onClick: () => {} },
+        ]}
+        copyRightText="© 2024 F5 ERP. Todos los derechos reservados."
+      />
       </div>
     </div>
   );
