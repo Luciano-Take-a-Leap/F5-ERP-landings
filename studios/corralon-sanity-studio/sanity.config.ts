@@ -7,12 +7,13 @@ export default defineConfig({
   name: 'default',
   title: 'Landing Corralón Sanity Studio',
 
-  projectId: 'pgsz4rej',
+  projectId: 'p3snmdwd',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 
   schema: {
-    types: schemaTypes,
+    types: schemaTypes as any,
   },
 })
+    

@@ -1,27 +1,48 @@
 import {defineField, defineType} from 'sanity'
-const THero = defineType({
-  name: 'hero',
-  title: 'Sección Hero',
+
+const TDuplexSection = defineType({
+  name: 'duplexSection',
+  title: 'Sección Dúplex',
   type: 'document',
   fields: [
     defineField({
-      name: 'mainContent',
-      title: 'Contenido Principal',
+      name: 'tag',
+      title: 'Etiqueta',
+      type: 'string',
+      description: 'Etiqueta pequeña que aparece encima del título (ej: "EL PROBLEMA")',
+    }),
+    defineField({
+      name: 'title',
+      title: 'Título Principal',
       type: 'richText',
-      description: 'Texto descriptivo principal con formato de texto enriquecido',
+      description: 'Título principal de la sección con formato de texto enriquecido',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'subtitle',
-      title: 'Subtítulo',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      name: 'textContent',
+      title: 'Contenido de Texto',
+      type: 'richText',
+      description: 'Contenido narrativo con formato de texto enriquecido',
+    }),
+    defineField({
+      name: 'images',
+      title: 'Imágenes',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+      validation: (Rule) => Rule.min(1).error('Debes añadir al menos una imagen.'),
     }),
     defineField({
       name: 'ctaButton',
-      title: 'Call to Action Button',
+      title: 'Botón de Llamado a la Acción',
       type: 'object',
-      description: 'Botón destacado en el header (opcional)',
+      description: 'Botón destacado al final de la sección (opcional)',
       fields: [
         defineField({
           name: 'label',
@@ -50,36 +71,14 @@ const THero = defineType({
         }),
       ],
     }),
-    defineField({
-      name: 'backgroundImage',
-      title: 'Imagen de Fondo',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'mobileBackgroundImage',
-      title: 'Imagen de Fondo para Móvil',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
   ],
   preview: {
-    select: {
-      title: 'title',
-      subtitle: 'subtitle',
-    },
-    prepare({title, subtitle}: {title: string; subtitle: string}) {
+    prepare() {
       return {
-        title: title || 'Sección Hero',
-        subtitle: subtitle ? `${subtitle.substring(0, 60)}...` : 'Sin subtítulo',
+        title: 'Sección de tarjetas desplazables',
       }
     },
   },
 })
 
-export default THero
+export default TDuplexSection

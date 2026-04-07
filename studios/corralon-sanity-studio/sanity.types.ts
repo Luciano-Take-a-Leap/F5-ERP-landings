@@ -13,179 +13,14 @@
  */
 
 // Source: schema.json
-export type Footer = {
+export type CalendlySection = {
   _id: string
-  _type: 'footer'
+  _type: 'calendlySection'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  copyrightText?: string
-  socialLinks?: Array<{
-    platform?: 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'youtube' | 'github' | 'other'
-    href?: string
-    _type: 'socialLink'
-    _key: string
-  }>
-  navigation?: Array<{
-    label?: string
-    href?: string
-    _type: 'navigationLink'
-    _key: string
-  }>
-}
-
-export type PriceComparisonSection = {
-  _id: string
-  _type: 'priceComparisonSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  subtitle?: string
-  tableTitle?: string
-  tableDescription?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<{
-      href?: string
-      _type: 'link'
-      _key: string
-    }>
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-  firstColTitle?: {
-    text?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-  }
-  secondColTitle?: {
-    text?: string
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-  }
-  comparisonItems?: Array<{
-    title?: Array<{
-      children?: Array<{
-        marks?: Array<string>
-        text?: string
-        _type: 'span'
-        _key: string
-      }>
-      style?: 'normal'
-      listItem?: 'bullet' | 'number'
-      markDefs?: Array<{
-        href?: string
-        _type: 'link'
-        _key: string
-      }>
-      level?: number
-      _type: 'block'
-      _key: string
-    }>
-    withoutTakeALeap?: string
-    withTakeALeap?: string
-    _key: string
-  }>
-  regularPrice?: string
-  price?: string
-  ctaButton?: string
-}
-
-export type BeforeAfterSection = {
-  _id: string
-  _type: 'beforeAfterSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  leftTitle?: string
-  leftContent?: Array<string>
-  rightTitle?: string
-  rightContent?: Array<string>
-  ctaText?: string
-}
-
-export type WhatsappConfig = {
-  _id: string
-  _type: 'whatsappConfig'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  phoneNumber?: string
-  initialMessage?: string
-}
-
-export type PriceSection = {
-  _id: string
-  _type: 'priceSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  topText?: Array<{
-    children?: Array<{
-      marks?: Array<string>
-      text?: string
-      _type: 'span'
-      _key: string
-    }>
-    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | 'code'
-    listItem?: 'bullet' | 'number'
-    markDefs?: Array<
-      | {
-          href?: string
-          blank?: boolean
-          _type: 'link'
-          _key: string
-        }
-      | {
-          lineHeight?: 'normal' | 'relaxed' | 'tight'
-          highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue'
-          textColor?: 'black' | 'white' | 'orange' | 'blue' | 'dark-blue'
-          fontFamily?: 'montserrat' | 'archivo-black-400' | 'lora' | 'montagu' | 'work-sans'
-          _type: 'textSettings'
-          _key: string
-        }
-    >
-    level?: number
-    _type: 'block'
-    _key: string
-  }>
-  ctaButtonText?: string
-  regularPriceTitle?: string
-  regularPrice?: string
-  launchPriceTitle?: string
-  launchPrice?: string
-  boxItemsTitle?: string
-  boxItems?: Array<string>
-  boxCtaText?: string
+  title?: RichText
+  calendlyLink?: string
 }
 
 export type RichText = Array<{
@@ -224,7 +59,7 @@ export type FAQSection = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
+  title?: RichText
   faqs?: Array<{
     question?: string
     answer?: RichText
@@ -233,250 +68,64 @@ export type FAQSection = {
   }>
 }
 
-export type WarrantySection = {
+export type TestimonialsSection = {
   _id: string
-  _type: 'warrantySection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  subtitle?: RichText
-  Carousel?: {
-    title?: string
-    people?: Array<{
-      name?: string
-      role?: string
-      linkedIn?: string
-      _key: string
-    }>
-  }
-  ctaButton?: string
-}
-
-export type HowReservationWorksSection = {
-  _id: string
-  _type: 'howReservationWorksSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  cards?: Array<{
-    content?: string
-    _type: 'card'
-    _key: string
-  }>
-  bottomText?: RichText
-  ctaButton?: string
-}
-
-export type AboutMeSection = {
-  _id: string
-  _type: 'aboutMeSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  image?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  }
-  mobileImage?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    alt?: string
-    _type: 'image'
-  }
-  content?: RichText
-}
-
-export type SuccessCaseSection = {
-  _id: string
-  _type: 'successCaseSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  cases?: Array<
-    | {
-        title?: string
-        content?: RichText
-        image?: {
-          asset?: {
-            _ref: string
-            _type: 'reference'
-            _weak?: boolean
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-          }
-          media?: unknown
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          _type: 'image'
-        }
-        _type: 'case'
-        _key: string
-      }
-    | {
-        url?: string
-        _type: 'video'
-        _key: string
-      }
-  >
-}
-
-export type CurrentEditionPeopleSection = {
-  _id: string
-  _type: 'currentEditionPeopleSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  subtitle?: RichText
-  cards?: Array<{
-    name?: string
-    subtitle?: string
-    content?: RichText
-    _key: string
-  }>
-  postCardsText?: string
-  titleGuidanceCards?: string
-  processGuidanceCards?: Array<{
-    icon?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-    title?: string
-    content?: string
-    _key: string
-  }>
-  bonusTitle?: string
-  bonusSubtitle?: string
-  bonuses?: Array<{
-    title?: string
-    description?: RichText
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-    cost?: string
-    _key: string
-  }>
-  extraBonusesTitle?: string
-  extraBonusesSubtitle?: string
-  extraBonuses?: Array<{
-    title?: string
-    description?: RichText
-    image?: {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-    cost?: string
-    _key: string
-  }>
-  warningTitle?: string
-  warningSubtitle?: string
-  warningText?: RichText
-  testimonials?: Array<{
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-    _key: string
-  }>
-}
-
-export type ReasonSection = {
-  _id: string
-  _type: 'reasonSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  extraTitle?: string
-  image?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  content?: RichText
-}
-
-export type ExperiencingSection = {
-  _id: string
-  _type: 'experiencingSection'
+  _type: 'testimonialsSection'
   _createdAt: string
   _updatedAt: string
   _rev: string
   title?: RichText
+  subtitle?: string
   cards?: Array<{
-    topText?: string
-    bottomText?: string
+    rate?: 1 | 2 | 3 | 4 | 5
+    quote?: string
+    author?: {
+      avatar?: {
+        asset?: {
+          _ref: string
+          _type: 'reference'
+          _weak?: boolean
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+      }
+      name?: string
+      role?: string
+    }
     _type: 'card'
     _key: string
   }>
-  bottomText?: RichText
-  ctaButton?: string
 }
 
-export type ConversationSection = {
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
+export type DuplexSection = {
   _id: string
-  _type: 'conversationSection'
+  _type: 'duplexSection'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
-  image?: {
+  tag?: string
+  title?: RichText
+  textContent?: RichText
+  images?: Array<{
     asset?: {
       _ref: string
       _type: 'reference'
@@ -486,11 +135,68 @@ export type ConversationSection = {
     media?: unknown
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
-    alt?: string
     _type: 'image'
+    _key: string
+  }>
+  ctaButton?: {
+    label?: string
+    href?: string
   }
-  conversationTitle?: string
-  content?: RichText
+}
+
+export type ScrollableSection = {
+  _id: string
+  _type: 'scrollableSection'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  tag?: string
+  title?: RichText
+  subsections?: Array<{
+    title?: string
+    content?: RichText
+    image?: {
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+    }
+    _type: 'subsection'
+    _key: string
+  }>
+}
+
+export type CardsSection = {
+  _id: string
+  _type: 'cardsSection'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  tag?: string
+  title?: RichText
+  subtitle?: string
+  cards?: Array<{
+    icon?: 'watch' | 'box' | 'trendingUp' | 'trendingDown' | 'user' | 'star'
+    title?: string
+    description?: string
+    _type: 'card'
+    _key: string
+  }>
+}
+
+export type FullWidthTextSection = {
+  _id: string
+  _type: 'fullWidthTextSection'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  text?: RichText
 }
 
 export type Hero = {
@@ -499,115 +205,36 @@ export type Hero = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
-  subtitle?: string
   mainContent?: RichText
-  coloredSectionText?: string
-  ctaButton?: string
-}
-
-export type HomePage = {
-  _id: string
-  _type: 'homePage'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  seo?: Seo
-  redirectionButtonUrl?: string
-  sections?: Array<
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'aboutMeSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'conversationSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'currentEditionPeopleSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'experiencingSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'FAQSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'hero'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'howReservationWorksSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'reasonSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'successCaseSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'warrantySection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'priceSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'beforeAfterSection'
-      }
-    | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'priceComparisonSection'
-      }
-  >
+  subtitle?: string
+  ctaButton?: {
+    label?: string
+    href?: string
+  }
+  backgroundImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  mobileBackgroundImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
 }
 
 export type Seo = {
@@ -643,24 +270,127 @@ export type Seo = {
   noFollow?: boolean
 }
 
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  seo?: Seo
+  sections?: Array<
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'hero'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'fullWidthTextSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'cardsSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'scrollableSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'duplexSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'testimonialsSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'FAQSection'
+      }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'calendlySection'
+      }
+  >
+}
+
+export type Footer = {
+  _id: string
+  _type: 'footer'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  logo?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  copyrightText?: string
+  navigation?: Array<{
+    label?: string
+    href?: string
+    _type: 'navigationLink'
+    _key: string
+  }>
+}
+
 export type Header = {
   _id: string
   _type: 'header'
   _createdAt: string
   _updatedAt: string
   _rev: string
+  logo?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   navigation?: Array<{
     label?: string
     href?: string
-    isButton?: boolean
     _type: 'navigationLink'
     _key: string
   }>
-  countdownBanner?: {
-    enabled?: boolean
-    limitDate?: string
-    mainText?: string
-    ctaButtonText?: string
+  ctaButton?: {
+    label?: string
     href?: string
   }
 }
@@ -691,20 +421,15 @@ export type SanityImageDimensions = {
   aspectRatio?: number
 }
 
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
+export type SanityImageMetadata = {
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
 }
 
 export type SanityFileAsset = {
@@ -727,6 +452,13 @@ export type SanityFileAsset = {
   path?: string
   url?: string
   source?: SanityAssetSourceData
+}
+
+export type SanityAssetSourceData = {
+  _type: 'sanity.assetSourceData'
+  name?: string
+  id?: string
+  url?: string
 }
 
 export type SanityImageAsset = {
@@ -752,17 +484,6 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData
 }
 
-export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
-}
-
 export type Geopoint = {
   _type: 'geopoint'
   lat?: number
@@ -776,42 +497,29 @@ export type Slug = {
   source?: string
 }
 
-export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
-  name?: string
-  id?: string
-  url?: string
-}
-
 export type AllSanitySchemaTypes =
-  | Footer
-  | PriceComparisonSection
-  | BeforeAfterSection
-  | WhatsappConfig
-  | PriceSection
+  | CalendlySection
   | RichText
   | FAQSection
-  | WarrantySection
-  | HowReservationWorksSection
-  | AboutMeSection
-  | SuccessCaseSection
-  | CurrentEditionPeopleSection
-  | ReasonSection
-  | ExperiencingSection
-  | ConversationSection
+  | TestimonialsSection
+  | SanityImageCrop
+  | SanityImageHotspot
+  | DuplexSection
+  | ScrollableSection
+  | CardsSection
+  | FullWidthTextSection
   | Hero
-  | HomePage
   | Seo
+  | HomePage
+  | Footer
   | Header
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
   | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
   | Geopoint
   | Slug
-  | SanityAssetSourceData
 export declare const internalGroqTypeReferenceTo: unique symbol

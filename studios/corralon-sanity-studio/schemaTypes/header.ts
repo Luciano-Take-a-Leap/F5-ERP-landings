@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 const THeader = defineType({
   name: 'header',
@@ -6,6 +6,13 @@ const THeader = defineType({
   type: 'document',
   icon: () => '📄',
   fields: [
+    defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      description: 'Imagen del logo del sitio',
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: 'navigation',
       title: 'Links de navegación',
@@ -41,25 +48,17 @@ const THeader = defineType({
                   return true
                 }),
             }),
-            defineField({
-              name: 'isButton',
-              title: 'Mostrar como botón',
-              type: 'boolean',
-              initialValue: false,
-              description: 'Mostrar este enlace con estilo de botón',
-            }),
           ],
           preview: {
             select: {
               title: 'label',
               subtitle: 'href',
-              isButton: 'isButton',
             },
             prepare(value: Record<string, any>) {
-              const { title, subtitle, isButton } = value
+              const {title, subtitle} = value
               return {
                 title,
-                subtitle: `${subtitle} ${isButton ? '(Button)' : ''}`,
+                subtitle,
               }
             },
           },
@@ -68,48 +67,16 @@ const THeader = defineType({
       validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
-      name: 'countdownBanner',
-      title: 'Countdown Banner',
+      name: 'ctaButton',
+      title: 'Call to Action Button',
       type: 'object',
+      description: 'Botón destacado en el header (opcional)',
       fields: [
         defineField({
-          name: 'enabled',
-          title: 'Habilitar Banner de Cuenta Regresiva',
-          type: 'boolean',
-          initialValue: true,
-        }),
-        defineField({
-          name: 'limitDate',
-          title: 'Fecha limite de la cuenta regresiva',
-          type: 'datetime',
-          description: 'Cuando la cuenta regresiva llegará a cero',
-          validation: (Rule) =>
-            Rule.custom((value: string | undefined, context: any) => {
-              if (context.parent.enabled && !value) {
-                return 'La fecha de finalización es obligatoria cuando el contador está habilitado'
-              }
-              return true
-            }),
-        }),
-        defineField({
-          name: 'mainText',
-          title: 'Texto Principal de Promoción',
-          type: 'text',
-          rows: 3,
-          description: 'Mensaje principal mostrado en el banner',
-          validation: (Rule) =>
-            Rule.custom((value: string | undefined, context: any) => {
-              if (context.parent.enabled && !value) {
-                return 'El texto principal es obligatorio cuando el contador está habilitado'
-              }
-              return true
-            }),
-        }),
-        defineField({
-          name: 'ctaButtonText',
-          title: 'Texto del Botón CTA',
+          name: 'label',
+          title: 'Label',
           type: 'string',
-          description: 'Texto mostrado en el botón CTA',
+          description: 'Texto mostrado en el botón',
         }),
         defineField({
           name: 'href',
@@ -118,10 +85,11 @@ const THeader = defineType({
           description:
             'Puede ser un link interno (ej: /about-me), scroll a sección (ej: #about-me) o externo (ej: https://google.com)',
           validation: (Rule) =>
-            Rule.required().custom((value: string | undefined) => {
-              const isInternal = value?.startsWith('/')
-              const isSection = value?.startsWith('#')
-              const isExternal = value?.startsWith('http://') || value?.startsWith('https://')
+            Rule.custom((value: string | undefined) => {
+              if (!value) return true
+              const isInternal = value.startsWith('/')
+              const isSection = value.startsWith('#')
+              const isExternal = value.startsWith('http://') || value.startsWith('https://')
 
               if (!isInternal && !isExternal && !isSection) {
                 return 'URL/Link debe comenzar con "#" para scroll a secciones, con "/" para enlaces internos o "http://" o "https://" para enlaces externos'

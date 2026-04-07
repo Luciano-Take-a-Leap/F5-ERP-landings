@@ -1,41 +1,29 @@
-import TAboutMeSection from './aboutMeSection'
-import TBeforeAfterSection from './beforeAfterSection'
-import TConversationSection from './conversationSection'
-import TCurrentEditionPeopleSection from './currentEditionPeopleSection'
-import TExperiencingSection from './experiencingSection'
+import TCalendlySection from './calendlySection'
+import TCardsSection from './cardsSection'
+import TDuplexSection from './duplexSection'
 import TFAQsSection from './FAQSection'
 import TFooter from './footer'
+import TFullWidthTextSection from './fullWidthTextSection'
 import THeader from './header'
 import THero from './hero'
 import THomePage from './homepage'
-import THowReservationWorksSection from './howReservationWorksSection'
-import TPriceComparisonSection from './priceComparisonSection'
-import TPricingSection from './pricingSection'
-import TReasonSection from './reasonSection'
 import TRichText from './richText'
+import TScrollableSection from './scrollableSection'
 import TSEO from './SEO'
-import TSuccessCaseSection from './successCaseSection'
-import TWarrantySection from './warrantySection'
-import TWhatsappConfig from './whatsappConfig'
+import TTestimonialsSection from './testimonialsSection'
 
 export const schemaTypes = [
   THeader,
+  TFooter,
   THomePage,
   TSEO,
   THero,
-  TConversationSection,
-  TExperiencingSection,
-  TReasonSection,
-  TCurrentEditionPeopleSection,
-  TSuccessCaseSection,
-  TAboutMeSection,
-  THowReservationWorksSection,
-  TWarrantySection,
-  TFAQsSection,
   TRichText,
-  TPricingSection,
-  TWhatsappConfig,
-  TBeforeAfterSection,
-  TPriceComparisonSection,
-  TFooter,
+  TFullWidthTextSection,
+  TCardsSection,
+  TScrollableSection,
+  TDuplexSection,
+  TTestimonialsSection,
+  TFAQsSection,
+  TCalendlySection,
 ]

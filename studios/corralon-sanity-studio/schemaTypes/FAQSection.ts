@@ -8,13 +8,13 @@ const TFAQsSection = defineType({
     defineField({
       name: 'title',
       title: 'Título Principal',
-      type: 'string',
+      type: 'richText',
       description: 'Título principal de la sección',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'faqs',
-      title: 'FAQs',
+      title: 'Preguntas Frecuentes',
       type: 'array',
       description: 'Lista de preguntas frecuentes y sus respuestas',
       of: [
@@ -35,6 +35,7 @@ const TFAQsSection = defineType({
               title: 'Respuesta',
               type: 'richText',
               description: 'Respuesta a la pregunta con formato de texto enriquecido',
+              validation: (Rule) => Rule.required(),
             }),
           ],
         },
