@@ -21,7 +21,7 @@ export default async function Home() {
       />
       <ComponentResolver
         sections={
-          (pageData?.sections?.filter((sect) =>
+          ((pageData?.sections as unknown as HomePageSection[])?.filter((sect) =>
             isHeroSection(sect)
           ) as unknown as HomePageSection[]) || []
         }
@@ -29,7 +29,7 @@ export default async function Home() {
       <div className="max-w-7xl w-full px-6 md:px:none">
         <ComponentResolver
           sections={
-            (pageData?.sections?.filter(
+            ((pageData?.sections as unknown as HomePageSection[])?.filter(
               (sect) => !isHeroSection(sect)
             ) as unknown as HomePageSection[]) || []
           }

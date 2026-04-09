@@ -42,8 +42,8 @@ export type RichText = Array<{
     | {
         lineHeight?: 'normal' | 'relaxed' | 'tight'
         highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue'
-        textColor?: 'black' | 'white' | 'orange' | 'blue' | 'dark-blue'
-        fontFamily?: 'montserrat' | 'archivo-black-400' | 'lora' | 'montagu' | 'work-sans'
+        textColor?: 'black' | 'white' | 'primary' | 'gray'
+        fontFamily?: 'inter'
         _type: 'textSettings'
         _key: string
       }

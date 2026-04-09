@@ -284,15 +284,11 @@
                             },
                             {
                               "type": "string",
-                              "value": "orange"
+                              "value": "primary"
                             },
                             {
                               "type": "string",
-                              "value": "blue"
-                            },
-                            {
-                              "type": "string",
-                              "value": "dark-blue"
+                              "value": "gray"
                             }
                           ]
                         },
@@ -305,23 +301,7 @@
                           "of": [
                             {
                               "type": "string",
-                              "value": "montserrat"
-                            },
-                            {
-                              "type": "string",
-                              "value": "archivo-black-400"
-                            },
-                            {
-                              "type": "string",
-                              "value": "lora"
-                            },
-                            {
-                              "type": "string",
-                              "value": "montagu"
-                            },
-                            {
-                              "type": "string",
-                              "value": "work-sans"
+                              "value": "inter"
                             }
                           ]
                         },
