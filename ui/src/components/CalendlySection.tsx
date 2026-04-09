@@ -15,8 +15,6 @@ function CalendlySection({ title, calendlyUrl }: CalendlySectionProps) {
     const raw = getComputedStyle(document.documentElement)
       .getPropertyValue('--primary')
       .trim();
-        console.log('raw primary:', JSON.stringify(raw));
-
       //eslint-disable-next-line
     setPrimaryColor(raw.replace('#', '') || '007bff');
   }, []);
