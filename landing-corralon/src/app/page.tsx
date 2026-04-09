@@ -1,98 +1,41 @@
-'use client';
-import CardSection from '@ui/CardsSection';
-import FullWidthText from '@ui/FullWidthText';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { Archive03Icon, Clock01Icon, TradeDownIcon } from '@hugeicons/core-free-icons';
-import { Button } from '@ui';
-import DuplexSection from '@ui/DuplexSection';
-import Hero from '@ui/Hero';
-import ScrollableSection from '@ui/ScrollableSection';
-import Tag from '@ui/Tag';
-import TestimonialsSection from '@ui/TestimonialsSection';
-import Header from '@ui/Header';
-import TestimonialCard from '@ui/TestimonialCard';
-import Faq from '@ui/Faq';
 import Footer from '@ui/Footer';
+import { getHeaderData } from '../lib/sanity/fetching-functions/header';
+import { getFooterData } from '../lib/sanity/fetching-functions/footer';
+import { getHomePageSections } from '../lib/sanity/fetching-functions/homepage';
+import { generateSanityImageUrl } from '../utils/generate-sanity-image-url';
+import HeaderWrapper from '../components/layout/header-wrapper';
+import ComponentResolver from '../components/layout/homepage-component-resolver';
+import { HomePageSection, isHeroSection } from '../types';
 
-export default function Home() {
-  const contentCards = [
-    {
-      icon: <HugeiconsIcon icon={Clock01Icon} />,
-      title: 'El stock no coincide',
-      description:
-        'Figuran productos que no están y vendés productos que no tenés. Y al mismo tiempo, perdés ventas por no saber qué hay.',
-    },
-    {
-      icon: <HugeiconsIcon icon={Archive03Icon} />,
-      title: 'Desorden en entregas, pedidos y acopios',
-      description: 'No sabés qué pedidos hay que entregar.',
-    },
-    {
-      icon: <HugeiconsIcon icon={TradeDownIcon} />,
-      title: 'Precios desactualizados o mal cargados',
-      description:
-        'Cambiar listas es un dolor de cabeza y terminás vendiendo con márgenes incorrectos.',
-    },
-    {
-      icon: <HugeiconsIcon icon={Clock01Icon} />,
-      title: 'Ausencia de información',
-      description:
-        'No sabés si estás ganando o perdiendo plata. Y lo más importante: no podés confiar en la información del sistema para tomar decisiones.',
-    },
-    {
-      icon: <HugeiconsIcon icon={Archive03Icon} />,
-      title: 'Todo depende del dueño',
-      description:
-        'Si no estás, el negocio no funciona. No podés delegar ni tomarte tiempo para crecer o descansar.',
-    },
-    {
-      icon: <HugeiconsIcon icon={TradeDownIcon} />,
-      title: 'Ventas lentas y procesos complicados',
-      description:
-        'Muchos pasos para vender y sistemas poco intuitivos. Perdés mucho tiempo en el mostrador.',
-    },
-  ];
-
-  const faqContent = [
-    {
-      questions: '¿Cuánto tiempo tarda la implementación?',
-      answer:
-        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    },
-    {
-      questions: '¿Puedo migrar mis datos de Excel?',
-      answer:
-        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    },
-    {
-      questions: '¿El sistema funciona sin internet?',
-      answer:
-        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    },
-    {
-      questions: '¿Tienen soporte técnico local?',
-      answer:
-        'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    },
-  ];
+export default async function Home() {
+  const headerData = await getHeaderData();
+  const footerData = await getFooterData();
+  const pageData = await getHomePageSections();
 
   return (
     <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black relative">
-      <Header
-        logo="/icon.png"
-        menuItems={[
-          { label: 'Soluciones', onClick: () => {} },
-          { label: 'Integraciones', onClick: () => {} },
-          { label: 'Clientes', onClick: () => {} },
-          { label: 'FAQ', onClick: () => {} },
-        ]}
-        ctaButton={
-          <Button className="font-extrabold p-5" size="lg">
-            Agenda una reunión
-          </Button>
+      <HeaderWrapper
+        logo={headerData?.logo}
+        menuItems={headerData?.navigation}
+        ctaButton={headerData?.ctaButton}
+      />
+      <ComponentResolver
+        sections={
+          (pageData?.sections?.filter((sect) =>
+            isHeroSection(sect)
+          ) as unknown as HomePageSection[]) || []
         }
       />
-      <Hero
+      <div className="max-w-7xl w-full px-6 md:px:none">
+        <ComponentResolver
+          sections={
+            (pageData?.sections?.filter(
+              (sect) => !isHeroSection(sect)
+            ) as unknown as HomePageSection[]) || []
+          }
+        />
+      </div>
+      {/* <Hero
         title={
           <span>
             <p className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
@@ -256,17 +199,17 @@ export default function Home() {
           ]}
         />
         <Faq title="Preguntas frecuentes" items={faqContent} />
-      </div>
-        <Footer
-          icon="/footer-icon.png"
-          name="F5 ERP"
-          navItems={[
-            { label: 'Términos', onClick: () => {} },
-            { label: 'Privacidad', onClick: () => {} },
-            { label: 'Contacto', onClick: () => {} },
-          ]}
-          copyRightText="© 2024 F5 ERP. Todos los derechos reservados."
-        />
+      </div>*/}
+      <Footer
+        icon={generateSanityImageUrl(footerData?.logo)}
+        navItems={
+          footerData?.navigation?.map((item) => ({
+            label: item.label || '',
+            href: item.href || '#',
+          })) || []
+        }
+        copyRightText={footerData?.copyrightText || ''}
+      />
     </div>
   );
 }

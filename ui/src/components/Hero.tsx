@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 interface HeroProps {
   title: React.ReactNode;
-  description: string;
+  description?: string;
   backgroundImage: string;
   mobileBackgroundImage?: string;
   button: React.ReactNode;

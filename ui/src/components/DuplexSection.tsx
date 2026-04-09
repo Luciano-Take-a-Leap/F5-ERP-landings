@@ -7,7 +7,7 @@ import { Card, CardContent } from './ui/card';
 
 interface DuplexSectionProps {
   tag: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   textSection?: React.ReactNode;
   images: string[];
   ctaButton?: React.ReactNode;
@@ -22,7 +22,7 @@ function DuplexSection({
   ctaButton,
   textFirst = true,
 }: DuplexSectionProps) {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 3500, stopOnInteraction: true }));
 
   const ImageBlock = () =>
     images?.length === 1 ? (
@@ -68,7 +68,7 @@ function DuplexSection({
   );
 
   return (
-<section className="w-full py-12 px-4 md:px-0 overflow-hidden">
+<section className="w-full py-12 overflow-hidden">
       {tag}
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
         {title}

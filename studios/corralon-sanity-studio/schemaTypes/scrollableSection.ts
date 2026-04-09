@@ -16,7 +16,6 @@ const TScrollableSection = defineType({
       title: 'Título Principal',
       type: 'richText',
       description: 'Título principal de la sección con formato de texto enriquecido',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subsections',
@@ -32,12 +31,14 @@ const TScrollableSection = defineType({
               name: 'title',
               title: 'Título',
               type: 'string',
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'content',
               title: 'Contenido',
               type: 'richText',
               description: 'Contenido narrativo con formato de texto enriquecido',
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'image',
@@ -46,28 +47,12 @@ const TScrollableSection = defineType({
               options: {
                 hotspot: true,
               },
+              validation: (Rule) => Rule.required(),
             },
           ],
-          validation: (Rule) =>
-            Rule.custom((subsections: any[] | undefined) => {
-              if (!subsections || subsections.length === 0) {
-                return 'Debe haber al menos una subsección'
-              }
-              for (const subsection of subsections) {
-                if (!subsection.title) {
-                  return 'Cada subsección debe tener un título'
-                }
-                if (!subsection.content) {
-                  return 'Cada subsección debe tener contenido'
-                }
-                if (!subsection.image) {
-                  return 'Cada subsección debe tener una imagen'
-                }
-              }
-              return true
-            }),
         },
       ],
+      validation: (Rule) => Rule.required().min(1).error('Debe haber al menos una subsección'),
     }),
   ],
   preview: {

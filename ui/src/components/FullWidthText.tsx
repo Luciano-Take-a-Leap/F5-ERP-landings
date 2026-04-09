@@ -8,7 +8,7 @@ const FullWidthText: React.FC<FullWidthTextProps> = ({
 children
 }) => {
   return (
-    <div className="relative w-full md:max-h-[340px] h-[40vh] flex items-center justify-center">
+    <div className="relative w-full flex items-center justify-center text-center">
     {children}
     </div>
   );

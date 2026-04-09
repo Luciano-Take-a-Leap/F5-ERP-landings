@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from 'react';
 
 interface ScrollableSectionProps {
   tag: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   subsections: {
     title: string;
-    description: string;
+    description: React.ReactNode;
     image?: string;
   }[];
 }
@@ -21,52 +21,46 @@ const ScrollableSection = ({ tag, title, subsections }: ScrollableSectionProps) 
 
   useEffect(() => {
     if (activeIndex === visibleIndex) return;
-
-    const fadeStart = setTimeout(() => {
-      setFading(true);
-    }, 0);
-
+    //eslint-disable-next-line
+    setFading(true);
     const timeout = setTimeout(() => {
       setVisibleIndex(activeIndex);
       setFading(false);
     }, 250);
 
-    return () => {
-      clearTimeout(fadeStart);
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timeout);
   }, [activeIndex, visibleIndex]);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
 
-    subsectionRefs.current.forEach((el, index) => {
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(index);
-          }
-        },
-        {
-          root: null,
-          rootMargin: '-40% 0px -40% 0px',
-          threshold: 0,
+      subsectionRefs.current.forEach((el, index) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(elCenter - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
         }
-      );
+      });
 
-      observer.observe(el);
-      observers.push(observer);
-    });
+      setActiveIndex(closestIndex);
+    };
 
-    return () => observers.forEach((obs) => obs.disconnect());
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [subsections]);
 
   const currentImage = subsections[visibleIndex]?.image;
 
   return (
-    <section className="w-full px-6 py-24">
+    <section className="w-full py-24">
       <div className="mb-12 flex flex-col items-start gap-4">
         {tag}
         <h2 className="text-4xl font-bold tracking-tight">{title}</h2>
@@ -86,9 +80,9 @@ const ScrollableSection = ({ tag, title, subsections }: ScrollableSectionProps) 
               ].join(' ')}
             >
               <h3 className="text-2xl font-semibold">{subsection.title}</h3>
-              <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
+              <div className="max-w-prose text-base leading-relaxed">
                 {subsection.description}
-              </p>
+              </div>
               {subsection.image && (
                 <div className="relative w-full h-56 lg:hidden">
                   <Image

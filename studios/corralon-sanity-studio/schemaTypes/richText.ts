@@ -25,6 +25,7 @@ const TRichText = defineType({
       marks: {
         decorators: [
           {title: 'Negrita', value: 'strong'},
+          {title: 'Extra Negrita', value: 'extra-bold'},
           {title: 'Cursiva', value: 'em'},
           {title: 'Subrayado', value: 'underline'},
           {title: 'Código', value: 'code'},
@@ -93,27 +94,20 @@ const TRichText = defineType({
                   list: [
                     {title: 'Negro', value: 'black'},
                     {title: 'Blanco', value: 'white'},
-                    {title: 'Naranja', value: 'orange'},
-                    {title: 'Azul', value: 'blue'},
-                    {title: 'Azul Oscuro', value: 'dark-blue'},
+                    {title: 'Color primario', value: 'primary'},
+                    {title: 'Gris', value: 'gray'},
                   ],
                 },
-                initialValue: 'black',
+                initialValue: 'white',
               },
               {
                 name: 'fontFamily',
                 type: 'string',
                 title: 'Fuente',
                 options: {
-                  list: [
-                    {title: 'Montserrat', value: 'montserrat'},
-                    {title: 'Archivo Black 400', value: 'archivo-black-400'},
-                    {title: 'Lora', value: 'lora'},
-                    {title: 'Montagu Slab', value: 'montagu'},
-                    {title: 'Work Sans', value: 'work-sans'}
-                  ],
+                  list: [{title: 'Inter', value: 'inter'}],
                 },
-                initialValue: 'montserrat',
+                initialValue: 'inter',
               },
             ],
           },

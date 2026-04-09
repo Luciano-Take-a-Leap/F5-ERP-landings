@@ -5,7 +5,7 @@ import Card, { CardProps }  from "./Card";
 
 interface CardSectionProps {
   tag: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   subtitle: string;
   cards: CardProps[];
 }
@@ -17,7 +17,7 @@ const CardSection: React.FC<CardSectionProps> = ({
   cards,
 }) => {
   return (
-    <section className="w-full bg-black px-6 py-20">
+    <section className="w-full bg-black py-20">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
             <h3>{tag}</h3>

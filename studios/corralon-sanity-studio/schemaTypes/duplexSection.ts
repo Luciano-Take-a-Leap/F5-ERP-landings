@@ -75,7 +75,7 @@ const TDuplexSection = defineType({
   preview: {
     prepare() {
       return {
-        title: 'Sección de tarjetas desplazables',
+        title: 'Sección dúplex',
       }
     },
   },

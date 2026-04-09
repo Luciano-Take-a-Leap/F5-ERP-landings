@@ -5,14 +5,16 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Menu, X } from '@hugeicons/core-free-icons';
-
+import navigateToLink from '../utils/useNavigateToLink';
+import { useRouter } from 'next/navigation';
 interface HeaderProps {
   logo: string;
-  menuItems: { label: string; onClick: () => void }[];
+  menuItems: { label: string; href: string }[];
   ctaButton: React.ReactNode;
 }
 
 const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
+  const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
               <Button
                 variant="link"
                 key={item.label}
-                onClick={item.onClick}
+                onClick={() => navigateToLink(item.href, router)}
                 className="text-md font-medium text-white hover:text-primary transition-colors"
               >
                 {item.label}
@@ -89,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
             <button
               key={item.label}
               onClick={() => {
-                item.onClick();
+                navigateToLink(item.href, router);
                 closeDrawer();
               }}
               className="text-left text-white text-base font-medium px-3 py-3 rounded-lg hover:bg-white/10 transition-colors"

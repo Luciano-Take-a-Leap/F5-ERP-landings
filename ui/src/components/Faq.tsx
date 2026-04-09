@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
 interface FaqProps {
-  title: string;
+  title: React.ReactNode;
   items: {
-    questions: string;
-    answer: string;
+    question: string;
+    answer: React.ReactNode;
   }[];
 }
 
@@ -29,7 +29,7 @@ const Faq: React.FC<FaqProps> = ({ title, items }) => {
             const isOpen = open === index;
             return (
               <div
-                key={item.questions}
+                key={item.question}
                 className="overflow-hidden rounded-2xl border border-white/10"
               >
                 <button
@@ -38,23 +38,21 @@ const Faq: React.FC<FaqProps> = ({ title, items }) => {
                   className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-8"
                 >
                   <span className="text-lg font-bold text-white md:text-1xl">
-                    {item.questions}
+                    {item.question}
                   </span>
 
                   <span className="shrink-0 text-2xl leading-none text-primary">
-                    {isOpen ? "−" : "+"}
+                    {isOpen ? '−' : '+'}
                   </span>
                 </button>
                 <div
                   className={`grid transition-all duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                   }`}
                 >
                   <div className="overflow-hidden">
                     <div className="px-6 pb-6 md:px-8">
-                      <p className="text-sm leading-7 text-white/70 md:text-base">
-                        {item.answer}
-                      </p>
+                      <div>{item.answer}</div>
                     </div>
                   </div>
                 </div>

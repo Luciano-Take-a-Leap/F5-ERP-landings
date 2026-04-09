@@ -42,5 +42,12 @@ const TFAQsSection = defineType({
       ],
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Sección de Preguntas Frecuentes',
+      }
+    },
+  },
 })
 export default TFAQsSection

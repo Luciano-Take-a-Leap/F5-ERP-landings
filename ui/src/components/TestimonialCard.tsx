@@ -12,7 +12,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ rate, text, author }) => {
   return (
-    <div className="w-full max-w-md bg-card-dark-background rounded-lg shadow-md p-6">
+    <div className="w-full max-w-md h-full bg-card-dark-background rounded-lg shadow-md p-6">
       <div className="flex items-center mb-4">
         <div className="flex items-center">
           {Array.from({ length: 5 }, (_, index) => (
@@ -39,7 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ rate, text, author })
           ))}
         </div>
       </div>
-      <p className="text-white italic mb-4">&quot;{text}&quot;</p>
+      <p className="text-white italic mb-4">{text}</p>
       <div className="flex items-center">
         <Avatar className="w-12 h-12 rounded-full mr-4">
           <AvatarImage src={author.avatar} alt={author.name} />
