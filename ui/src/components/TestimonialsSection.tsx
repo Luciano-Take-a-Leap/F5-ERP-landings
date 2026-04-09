@@ -12,13 +12,14 @@ import Autoplay from 'embla-carousel-autoplay';
 interface TestimonialsSectionProps {
   title: React.ReactNode;
   cards: React.ReactNode[];
+  id?: string;
 }
 
-const TestimonialsSection = ({ title, cards }: TestimonialsSectionProps) => {
+const TestimonialsSection = ({ title, cards, id }: TestimonialsSectionProps) => {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
   return (
-    <section className="w-full py-12 overflow-hidden">
+    <section className="w-full py-12 overflow-hidden" id={id}>
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 text-center">
         {title}
       </h2>

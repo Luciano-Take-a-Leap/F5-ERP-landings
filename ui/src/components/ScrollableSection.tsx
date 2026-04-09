@@ -11,9 +11,10 @@ interface ScrollableSectionProps {
     description: React.ReactNode;
     image?: string;
   }[];
+  id?: string;
 }
 
-const ScrollableSection = ({ tag, title, subsections }: ScrollableSectionProps) => {
+const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleIndex, setVisibleIndex] = useState(0);
   const [fading, setFading] = useState(false);
@@ -60,7 +61,7 @@ const ScrollableSection = ({ tag, title, subsections }: ScrollableSectionProps) 
   const currentImage = subsections[visibleIndex]?.image;
 
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-24" id={id}>
       <div className="mb-12 flex flex-col items-start gap-4">
         {tag}
         <h2 className="text-4xl font-bold tracking-tight">{title}</h2>

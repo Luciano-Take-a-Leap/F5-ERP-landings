@@ -11,9 +11,10 @@ interface HeaderProps {
   logo: string;
   menuItems: { label: string; href: string }[];
   ctaButton: React.ReactNode;
+  id?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
+const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton, id }) => {
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -28,7 +29,10 @@ const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton }) => {
 
   return (
     <>
-      <header className="w-full py-3 px-4 md:px-12 lg:px-20 fixed top-0 left-0 z-50 bg-black/70 backdrop-blur-xs">
+      <header
+        className="w-full py-3 px-4 md:px-12 lg:px-20 fixed top-0 left-0 z-50 bg-black/70 backdrop-blur-xs"
+        id={id}
+      >
         <div className="flex items-center justify-between w-full md:justify-around md:gap-8">
           <div>
             <Image src={logo} alt="Logo" className="h-8" width={32} height={32} />

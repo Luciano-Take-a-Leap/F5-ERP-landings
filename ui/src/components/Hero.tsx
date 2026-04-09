@@ -8,6 +8,7 @@ interface HeroProps {
   backgroundImage: string;
   mobileBackgroundImage?: string;
   button: React.ReactNode;
+  id?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({
@@ -16,9 +17,13 @@ const Hero: React.FC<HeroProps> = ({
   backgroundImage,
   mobileBackgroundImage,
   button,
+  id,
 }) => {
   return (
-    <div className="relative w-full md:max-h-[640px] h-[80vh] flex items-center justify-center">
+    <div
+      className="relative w-full md:max-h-[640px] h-[80vh] flex items-center justify-center"
+      id={id}
+    >
       <Image
         src={backgroundImage}
         alt="Hero Background"

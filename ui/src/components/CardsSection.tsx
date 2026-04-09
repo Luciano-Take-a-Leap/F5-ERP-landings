@@ -8,6 +8,7 @@ interface CardSectionProps {
   title: React.ReactNode;
   subtitle: string;
   cards: CardProps[];
+  id?: string;
 }
 
 const CardSection: React.FC<CardSectionProps> = ({
@@ -15,9 +16,10 @@ const CardSection: React.FC<CardSectionProps> = ({
   title,
   subtitle,
   cards,
+  id,
 }) => {
   return (
-    <section className="w-full bg-black py-20">
+    <section className="w-full bg-black py-20" id={id}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
             <h3>{tag}</h3>

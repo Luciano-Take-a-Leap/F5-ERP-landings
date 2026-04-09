@@ -12,6 +12,7 @@ interface DuplexSectionProps {
   images: string[];
   ctaButton?: React.ReactNode;
   textFirst?: boolean;
+  id?: string;
 }
 
 function DuplexSection({
@@ -21,6 +22,7 @@ function DuplexSection({
   textSection,
   ctaButton,
   textFirst = true,
+  id,
 }: DuplexSectionProps) {
   const plugin = useRef(Autoplay({ delay: 3500, stopOnInteraction: true }));
 
@@ -63,12 +65,12 @@ function DuplexSection({
   const TextBlock = () => (
     <div className="flex flex-col gap-4 md:max-w-[70%]">
       {textSection}
-      {ctaButton && <div>{ctaButton}</div>}
+      {ctaButton && <div className='mt-6'>{ctaButton}</div>}
     </div>
   );
 
   return (
-<section className="w-full py-12 overflow-hidden">
+    <section className="w-full py-12 overflow-hidden" id={id}>
       {tag}
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
         {title}

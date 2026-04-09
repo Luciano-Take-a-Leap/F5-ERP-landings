@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 interface CalendlySectionProps {
   title: React.ReactNode;
   calendlyUrl: string;
+  id?: string;
 }
 
-function CalendlySection({ title, calendlyUrl }: CalendlySectionProps) {
+function CalendlySection({ title, calendlyUrl, id }: CalendlySectionProps) {
   const [primaryColor, setPrimaryColor] = useState<string | null>(null);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function CalendlySection({ title, calendlyUrl }: CalendlySectionProps) {
   }, []);
 
   return (
-    <section className="w-full py-16 flex items-center justify-center text-center">
+    <section className="w-full py-16 flex items-center justify-center text-center" id={id}>
       <div className="mx-auto w-full px-4">
         <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12">
           {title}

@@ -8,9 +8,10 @@ interface FaqProps {
     question: string;
     answer: React.ReactNode;
   }[];
+  id?: string;
 }
 
-const Faq: React.FC<FaqProps> = ({ title, items }) => {
+const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
   const [open, SetOpen] = React.useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -18,7 +19,7 @@ const Faq: React.FC<FaqProps> = ({ title, items }) => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24">
+    <section className="w-full py-16 md:py-24" id={id}>
       <div className="mx-auto w-full max-w-6xl px-4">
         <h2 className="mb-20 text-center text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           {title}

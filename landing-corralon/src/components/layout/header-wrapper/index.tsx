@@ -16,28 +16,26 @@ interface HeaderWrapperProps {
 const HeaderWrapper = ({ logo, menuItems, ctaButton }: HeaderWrapperProps) => {
   const router = useRouter();
   return (
-    <div>
-      <Header
-        logo={generateSanityImageUrl(logo)}
-        menuItems={
-          menuItems?.map((item) => ({
-            label: item.label || '',
-            href: item.href || '#',
-          })) || []
-        }
-        ctaButton={
-          ctaButton ? (
-            <Button
-              className="font-extrabold p-5"
-              size="lg"
-              onClick={() => navigateToLink(ctaButton?.href || '', router)}
-            >
-              {ctaButton?.label}
-            </Button>
-          ) : undefined
-        }
-      />
-    </div>
+    <Header
+      logo={generateSanityImageUrl(logo)}
+      menuItems={
+        menuItems?.map((item) => ({
+          label: item.label || '',
+          href: item.href || '#',
+        })) || []
+      }
+      ctaButton={
+        ctaButton ? (
+          <Button
+            className="font-extrabold p-5"
+            size="lg"
+            onClick={() => navigateToLink(ctaButton?.href || '', router)}
+          >
+            {ctaButton?.label}
+          </Button>
+        ) : undefined
+      }
+    />
   );
 };
 

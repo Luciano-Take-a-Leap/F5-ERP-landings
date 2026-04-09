@@ -53,35 +53,35 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             ctaButton,
           } = section;
           return (
-            <section key={sectionKey} className="w-full md:mt-20">
-              <Hero
-                title={<RichText value={mainContent} />}
-                description={subtitle}
-                mobileBackgroundImage={
-                  mobileBackgroundImage
-                    ? generateSanityImageUrl(mobileBackgroundImage)
-                    : generateSanityImageUrl(backgroundImage)
-                }
-                backgroundImage={generateSanityImageUrl(backgroundImage)}
-                button={
-                  ctaButton ? (
-                    <Button
-                      className="font-extrabold p-5"
-                      size="lg"
-                      onClick={() => navigateToLink(ctaButton.href || '', router)}
-                    >
-                      {ctaButton.label}
-                    </Button>
-                  ) : null
-                }
-              />
-            </section>
+            <Hero
+              key={sectionKey}
+              title={<RichText value={mainContent} />}
+              description={subtitle}
+              mobileBackgroundImage={
+                mobileBackgroundImage
+                  ? generateSanityImageUrl(mobileBackgroundImage)
+                  : generateSanityImageUrl(backgroundImage)
+              }
+              backgroundImage={generateSanityImageUrl(backgroundImage)}
+              button={
+                ctaButton ? (
+                  <Button
+                    className="font-extrabold p-5"
+                    size="lg"
+                    onClick={() => navigateToLink(ctaButton.href || '', router)}
+                  >
+                    {ctaButton.label}
+                  </Button>
+                ) : null
+              }
+            />
           );
         }
 
         if (isFAQSection(section)) {
           return (
             <FAQSection
+              id="faq"
               key={sectionKey}
               title={<RichText value={section.title} />}
               items={
@@ -97,6 +97,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
         if (isDuplexSection(section)) {
           return (
             <DuplexSection
+              id="integraciones"
               key={sectionKey}
               tag={<Tag text={section.tag || ''} variant="outline" />}
               title={<RichText value={section.title} />}
@@ -146,6 +147,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
         if (isScrollableSection(section)) {
           return (
             <ScrollableSection
+              id="soluciones"
               key={sectionKey}
               tag={<Tag text={section.tag || ''} variant="outline" />}
               title={<RichText value={section.title} />}
@@ -165,6 +167,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
         if (isTestimonialsSection(section)) {
           return (
             <TestimonialsSection
+              id="clientes"
               key={sectionKey}
               title={<RichText value={section.title} />}
               cards={
@@ -187,7 +190,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
           );
         }
 
-        if (section._type === 'calendlySection') {
+        if (isCalendlySection(section)) {
           return (
             <CalendlySection
               key={section._key}

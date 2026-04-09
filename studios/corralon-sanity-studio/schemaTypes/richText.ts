@@ -25,7 +25,7 @@ const TRichText = defineType({
       marks: {
         decorators: [
           {title: 'Negrita', value: 'strong'},
-          {title: 'Extra Negrita', value: 'extra-bold'},
+          {title: 'Extra Negrita', value: 'extra-bold', icon: () => 'EB'},
           {title: 'Cursiva', value: 'em'},
           {title: 'Subrayado', value: 'underline'},
           {title: 'Código', value: 'code'},
