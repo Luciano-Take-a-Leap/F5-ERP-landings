@@ -37,8 +37,8 @@ const Hero: React.FC<HeroProps> = ({
         className="object-cover md:hidden"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black" />
-      <div className="relative z-10 text-center text-white px-4  flex flex-col items-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-4">{title}</h1>
+      <div className="relative z-10 text-center px-4 flex flex-col items-center">
+        <div className="mb-4">{title}</div>
         <p className="text-lg md:text-xl mb-12 max-w-lg">{description}</p>
         {button}
       </div>

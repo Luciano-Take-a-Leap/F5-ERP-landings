@@ -52,10 +52,11 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             backgroundImage,
             ctaButton,
           } = section;
+          console.log({mainContent})
           return (
             <Hero
               key={sectionKey}
-              title={<RichText value={mainContent} />}
+              title={<RichText value={mainContent} textClassName='text-6xl' />}
               description={subtitle}
               mobileBackgroundImage={
                 mobileBackgroundImage

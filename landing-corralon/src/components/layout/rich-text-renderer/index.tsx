@@ -21,29 +21,12 @@ interface TextSettingsAnnotation {
 interface RichTextProps {
   value?: TRichText;
   className?: string;
-  animate?: boolean;
-  delayStart?: number;
-  delayIncrement?: number;
-  smallFont?: boolean;
+  textClassName?: string;
 }
-
-let delayCounter = 0;
-
-const resetDelayCounter = () => {
-  delayCounter = 0;
-};
-
-const getNextDelay = (start: number, increment: number) => {
-  const delay = start + delayCounter * increment;
-  delayCounter++;
-  return delay;
-};
 
 const CustomLink = ({
   value,
   children,
-  animate = false,
-  delay = 0,
 }: {
   value?: LinkAnnotation;
   children: ReactNode;
@@ -53,14 +36,6 @@ const CustomLink = ({
   const { href, blank } = value || {};
   const target = blank ? '_blank' : undefined;
   const rel = blank ? 'noopener noreferrer' : undefined;
-
-  const animationProps = animate
-    ? {
-        initial: { y: 20, opacity: 0 },
-        animate: { y: 0, opacity: 1 },
-        transition: { delay, duration: 0.7 },
-      }
-    : {};
 
   const linkContent = (
     <Link
@@ -75,7 +50,7 @@ const CustomLink = ({
   );
 
   if (href?.startsWith('/')) {
-    return animate ? <span {...animationProps}>{linkContent}</span> : linkContent;
+    return linkContent;
   }
 
   const externalLinkContent = (
@@ -90,23 +65,15 @@ const CustomLink = ({
     </a>
   );
 
-  return animate ? (
-    <span {...animationProps}>{externalLinkContent}</span>
-  ) : (
-    externalLinkContent
-  );
+  return externalLinkContent;
 };
 
 const TextSettingsWrapper = ({
   value,
   children,
-  animate = false,
-  delay = 0,
 }: {
   value?: TextSettingsAnnotation;
   children: ReactNode;
-  animate?: boolean;
-  delay?: number;
 }) => {
   const {
     lineHeight = 'normal',
@@ -183,245 +150,110 @@ const TextSettingsWrapper = ({
     .filter(Boolean)
     .join(' ');
 
-  const animationProps = animate
-    ? {
-        initial: { y: 20, opacity: 0 },
-        animate: { y: 0, opacity: 1 },
-        transition: { delay, duration: 0.7 },
-      }
-    : {};
-
-  return animate ? (
-    <span className={combinedClasses} {...animationProps}>
-      {children}
-    </span>
-  ) : (
-    <span className={combinedClasses}>{children}</span>
-  );
+  return <span className={combinedClasses}>{children}</span>;
 };
 
 export default function RichText({
   value,
   className = '',
-  animate = false,
-  delayStart = 0.7,
-  delayIncrement = 0.1,
-  smallFont = false,
+  textClassName = '',
 }: RichTextProps) {
   if (!value || !Array.isArray(value)) {
     return null;
   }
 
-  if (animate) {
-    resetDelayCounter();
-  }
-
   const createComponents = (): Partial<PortableTextReactComponents> => ({
     block: {
       normal: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
-          <p
-            className={cn(
-              'leading-relaxed font-montserrat text-black',
-              smallFont && 'text-md'
-            )}
-            {...animationProps}
-          >
+        return (
+          <p className={cn('leading-relaxed font-inter text-white', textClassName)}>
             {children}
           </p>
-        ) : (
-          <p className="leading-relaxed font-montserrat text-black">{children}</p>
         );
       },
       h1: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h1
-            className="text-4xl leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn('text-4xl leading-tight font-inter text-white', textClassName)}
           >
-            {children}
-          </h1>
-        ) : (
-          <h1 className="text-4xl leading-tight font-montserrat text-black">
             {children}
           </h1>
         );
       },
       h2: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h2
-            className="text-3xl leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn('text-3xl leading-tight font-inter text-white', textClassName)}
           >
-            {children}
-          </h2>
-        ) : (
-          <h2 className="text-3xl leading-tight font-montserrat text-black">
             {children}
           </h2>
         );
       },
       h3: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h3
-            className="text-2xl leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn('text-2xl leading-tight font-inter text-white', textClassName)}
           >
-            {children}
-          </h3>
-        ) : (
-          <h3 className="text-2xl leading-tight font-montserrat text-black">
             {children}
           </h3>
         );
       },
       h4: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h4
-            className="text-xl font-normal leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn(
+              'text-xl font-normal leading-tight font-inter text-white',
+              textClassName
+            )}
           >
-            {children}
-          </h4>
-        ) : (
-          <h4 className="text-xl font-normal leading-tight font-montserrat text-black">
             {children}
           </h4>
         );
       },
       h5: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h5
-            className="text-lg font-normal leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn(
+              'text-lg font-normal leading-tight font-inter text-white',
+              textClassName
+            )}
           >
-            {children}
-          </h5>
-        ) : (
-          <h5 className="text-lg font-normal leading-tight font-montserrat text-black">
             {children}
           </h5>
         );
       },
       h6: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <h6
-            className="text-base font-normal leading-tight font-montserrat text-black"
-            {...animationProps}
+            className={cn(
+              'text-base font-normal leading-tight font-inter text-white',
+              textClassName
+            )}
           >
-            {children}
-          </h6>
-        ) : (
-          <h6 className="text-base font-normal leading-tight font-montserrat text-black">
             {children}
           </h6>
         );
       },
       blockquote: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <blockquote
-            className="border-l-4 border-gray-300 pl-4 py-2 my-6 italic text-gray-700 bg-gray-50 rounded-r-lg font-montserrat"
-            {...animationProps}
+            className={cn(
+              'border-l-4 border-gray-300 pl-4 py-2 my-6 italic text-gray-700 bg-gray-50 rounded-r-lg font-inter',
+              textClassName
+            )}
           >
-            {children}
-          </blockquote>
-        ) : (
-          <blockquote className="border-l-4 border-gray-300 pl-4 py-2 my-6 italic text-gray-700 bg-gray-50 rounded-r-lg font-montserrat">
             {children}
           </blockquote>
         );
       },
       code: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <pre
-            className="bg-gray-900 text-green-400 p-4 rounded-lg my-4 overflow-x-auto"
-            {...animationProps}
+            className={cn(
+              'bg-gray-900 text-green-400 p-4 rounded-lg my-4 overflow-x-auto',
+              textClassName
+            )}
           >
-            <code className="text-sm font-mono">{children}</code>
-          </pre>
-        ) : (
-          <pre className="bg-gray-900 text-green-400 p-4 rounded-lg my-4 overflow-x-auto">
             <code className="text-sm font-mono">{children}</code>
           </pre>
         );
@@ -429,47 +261,25 @@ export default function RichText({
     },
     list: {
       bullet: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <ul
-            className="list-disc list-inside space-y-2 font-montserrat text-black"
-            {...animationProps}
+            className={cn(
+              'list-disc list-inside space-y-2 font-inter text-white',
+              textClassName
+            )}
           >
-            {children}
-          </ul>
-        ) : (
-          <ul className="list-disc list-inside space-y-2 font-montserrat text-black">
             {children}
           </ul>
         );
       },
       number: ({ children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        const animationProps = animate
-          ? {
-              initial: { y: 20, opacity: 0 },
-              animate: { y: 0, opacity: 1 },
-              transition: { delay, duration: 0.7 },
-            }
-          : {};
-
-        return animate ? (
+        return (
           <ol
-            className="list-decimal list-inside space-y-2 font-montserrat text-black"
-            {...animationProps}
+            className={cn(
+              'list-decimal list-inside space-y-2 font-inter text-white',
+              textClassName
+            )}
           >
-            {children}
-          </ol>
-        ) : (
-          <ol className="list-decimal list-inside space-y-2 font-montserrat text-black">
             {children}
           </ol>
         );
@@ -477,14 +287,20 @@ export default function RichText({
     },
     listItem: {
       bullet: ({ children }) => (
-        <li className="leading-relaxed font-montserrat text-black">{children}</li>
+        <li className={cn('leading-relaxed font-inter text-white', textClassName)}>
+          {children}
+        </li>
       ),
       number: ({ children }) => (
-        <li className="leading-relaxed font-montserrat text-black">{children}</li>
+        <li className={cn('leading-relaxed font-inter text-white', textClassName)}>
+          {children}
+        </li>
       ),
     },
     marks: {
-      'extra-bold': ({ children }) => <strong className="font-extrabold">{children}</strong>,
+      'extra-bold': ({ children }) => (
+        <strong className="font-extrabold">{children}</strong>
+      ),
       strong: ({ children }) => <strong className="font-bold">{children}</strong>,
       em: ({ children }) => <em className="italic">{children}</em>,
       underline: ({ children }) => <span className="underline">{children}</span>,
@@ -494,21 +310,11 @@ export default function RichText({
         </code>
       ),
       link: ({ value, children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
-        return (
-          <CustomLink value={value as LinkAnnotation} animate={animate} delay={delay}>
-            {children}
-          </CustomLink>
-        );
+        return <CustomLink value={value as LinkAnnotation}>{children}</CustomLink>;
       },
       textSettings: ({ value, children }) => {
-        const delay = animate ? getNextDelay(delayStart, delayIncrement) : 0;
         return (
-          <TextSettingsWrapper
-            value={value as TextSettingsAnnotation}
-            animate={animate}
-            delay={delay}
-          >
+          <TextSettingsWrapper value={value as TextSettingsAnnotation}>
             {children}
           </TextSettingsWrapper>
         );
