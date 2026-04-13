@@ -10,7 +10,7 @@ children,
 id
 }) => {
   return (
-    <div className="relative w-full flex items-center justify-center text-center" id={id}>
+    <div className="relative w-full flex items-center justify-center text-center h-[200px]" id={id}>
     {children}
     </div>
   );

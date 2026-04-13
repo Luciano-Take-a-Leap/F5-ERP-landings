@@ -36,7 +36,7 @@ const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
                 <button
                   type="button"
                   onClick={() => handleToggle(index)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-8"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left md:px-8 cursor-pointer"
                 >
                   <span className="text-lg font-bold text-white md:text-1xl">
                     {item.question}
