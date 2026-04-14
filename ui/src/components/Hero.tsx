@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({
         fill
         className="object-cover md:hidden"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black" />
+      <div className="absolute inset-0 hero-gradient" />
       <div className="relative z-10 text-center px-4 flex flex-col items-center">
         <div className="mb-4">{title}</div>
         <p className="text-lg md:text-xl mb-12 max-w-lg">{description}</p>
