@@ -56,7 +56,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
           return (
             <Hero
               key={sectionKey}
-              title={<RichText value={mainContent} textClassName='text-6xl' />}
+              title={<RichText value={mainContent} textClassName='text-5xl md:text-6xl' />}
               description={subtitle}
               mobileBackgroundImage={
                 mobileBackgroundImage
