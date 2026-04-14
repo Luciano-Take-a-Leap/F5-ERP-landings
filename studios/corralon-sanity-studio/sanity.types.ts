@@ -13,6 +13,55 @@
  */
 
 // Source: schema.json
+export type InfiniteCarouselSection = {
+  _id: string
+  _type: 'infiniteCarouselSection'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  rows?: Array<
+    {
+      _key: string
+    } & InfiniteCarouselRow
+  >
+}
+
+export type InfiniteCarouselRow = {
+  _type: 'infiniteCarouselRow'
+  items?: Array<{
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+    _key: string
+  }>
+  speed?: 'slow' | 'medium' | 'fast'
+  direction?: 'leftToRight' | 'rightToLeft'
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
 export type CalendlySection = {
   _id: string
   _type: 'calendlySection'
@@ -98,22 +147,6 @@ export type TestimonialsSection = {
     _type: 'card'
     _key: string
   }>
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
 }
 
 export type DuplexSection = {
@@ -335,6 +368,13 @@ export type HomePage = {
         _key: string
         [internalGroqTypeReferenceTo]?: 'calendlySection'
       }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'infiniteCarouselSection'
+      }
   >
 }
 
@@ -498,12 +538,14 @@ export type Slug = {
 }
 
 export type AllSanitySchemaTypes =
+  | InfiniteCarouselSection
+  | InfiniteCarouselRow
+  | SanityImageCrop
+  | SanityImageHotspot
   | CalendlySection
   | RichText
   | FAQSection
   | TestimonialsSection
-  | SanityImageCrop
-  | SanityImageHotspot
   | DuplexSection
   | ScrollableSection
   | CardsSection

@@ -75,7 +75,13 @@ const THomePage = defineType({
           to: {type: 'calendlySection'},
           name: 'calendlySection',
           title: 'Sección de Calendly',
-        }
+        },
+        {
+          type: 'reference',
+          to: {type: 'infiniteCarouselSection'},
+          name: 'infiniteCarouselSection',
+          title: 'Sección de Carrusel Infinito',
+        },
       ],
       description: 'Añade y organiza las secciones que aparecerán en la página de inicio.',
       validation: (Rule) => Rule.required().min(1).error('Debes añadir al menos una sección.'),

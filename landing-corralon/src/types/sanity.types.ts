@@ -13,497 +13,539 @@
  */
 
 // Source: schema.json
+export type InfiniteCarouselSection = {
+  _id: string;
+  _type: 'infiniteCarouselSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  rows?: Array<
+    {
+      _key: string;
+    } & InfiniteCarouselRow
+  >;
+};
+
+export type InfiniteCarouselRow = {
+  _type: 'infiniteCarouselRow';
+  items?: Array<{
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+    _key: string;
+  }>;
+  speed?: 'slow' | 'medium' | 'fast';
+  direction?: 'leftToRight' | 'rightToLeft';
+};
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop';
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot';
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type CalendlySection = {
-  _id: string
-  _type: 'calendlySection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: RichText
-  calendlyLink?: string
-}
+  _id: string;
+  _type: 'calendlySection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: RichText;
+  calendlyLink?: string;
+};
 
 export type RichText = Array<{
   children?: Array<{
-    marks?: Array<string>
-    text?: string
-    _type: 'span'
-    _key: string
-  }>
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | 'code'
-  listItem?: 'bullet' | 'number'
+    marks?: Array<string>;
+    text?: string;
+    _type: 'span';
+    _key: string;
+  }>;
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | 'code';
+  listItem?: 'bullet' | 'number';
   markDefs?: Array<
     | {
-        href?: string
-        blank?: boolean
-        _type: 'link'
-        _key: string
+        href?: string;
+        blank?: boolean;
+        _type: 'link';
+        _key: string;
       }
     | {
-        lineHeight?: 'normal' | 'relaxed' | 'tight'
-        highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue'
-        textColor?: 'black' | 'white' | 'primary' | 'gray'
-        fontFamily?: 'inter'
-        _type: 'textSettings'
-        _key: string
+        lineHeight?: 'normal' | 'relaxed' | 'tight';
+        highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue';
+        textColor?: 'black' | 'white' | 'primary' | 'gray';
+        fontFamily?: 'inter';
+        _type: 'textSettings';
+        _key: string;
       }
-  >
-  level?: number
-  _type: 'block'
-  _key: string
-}>
+  >;
+  level?: number;
+  _type: 'block';
+  _key: string;
+}>;
 
 export type FAQSection = {
-  _id: string
-  _type: 'FAQSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: RichText
+  _id: string;
+  _type: 'FAQSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: RichText;
   faqs?: Array<{
-    question?: string
-    answer?: RichText
-    _type: 'faq'
-    _key: string
-  }>
-}
+    question?: string;
+    answer?: RichText;
+    _type: 'faq';
+    _key: string;
+  }>;
+};
 
 export type TestimonialsSection = {
-  _id: string
-  _type: 'testimonialsSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: RichText
-  subtitle?: string
+  _id: string;
+  _type: 'testimonialsSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: RichText;
+  subtitle?: string;
   cards?: Array<{
-    rate?: 1 | 2 | 3 | 4 | 5
-    quote?: string
+    rate?: 1 | 2 | 3 | 4 | 5;
+    quote?: string;
     author?: {
       avatar?: {
         asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
-        media?: unknown
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        _type: 'image'
-      }
-      name?: string
-      role?: string
-    }
-    _type: 'card'
-    _key: string
-  }>
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: 'image';
+      };
+      name?: string;
+      role?: string;
+    };
+    _type: 'card';
+    _key: string;
+  }>;
+};
 
 export type DuplexSection = {
-  _id: string
-  _type: 'duplexSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  tag?: string
-  title?: RichText
-  textContent?: RichText
+  _id: string;
+  _type: 'duplexSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  tag?: string;
+  title?: RichText;
+  textContent?: RichText;
   images?: Array<{
     asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-    _key: string
-  }>
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+    _key: string;
+  }>;
   ctaButton?: {
-    label?: string
-    href?: string
-  }
-}
+    label?: string;
+    href?: string;
+  };
+};
 
 export type ScrollableSection = {
-  _id: string
-  _type: 'scrollableSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  tag?: string
-  title?: RichText
+  _id: string;
+  _type: 'scrollableSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  tag?: string;
+  title?: RichText;
   subsections?: Array<{
-    title?: string
-    content?: RichText
+    title?: string;
+    content?: RichText;
     image?: {
       asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-    }
-    _type: 'subsection'
-    _key: string
-  }>
-}
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+    _type: 'subsection';
+    _key: string;
+  }>;
+};
 
 export type CardsSection = {
-  _id: string
-  _type: 'cardsSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  tag?: string
-  title?: RichText
-  subtitle?: string
+  _id: string;
+  _type: 'cardsSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  tag?: string;
+  title?: RichText;
+  subtitle?: string;
   cards?: Array<{
-    icon?: 'watch' | 'box' | 'trendingUp' | 'trendingDown' | 'user' | 'star'
-    title?: string
-    description?: string
-    _type: 'card'
-    _key: string
-  }>
-}
+    icon?: 'watch' | 'box' | 'trendingUp' | 'trendingDown' | 'user' | 'star';
+    title?: string;
+    description?: string;
+    _type: 'card';
+    _key: string;
+  }>;
+};
 
 export type FullWidthTextSection = {
-  _id: string
-  _type: 'fullWidthTextSection'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  text?: RichText
-}
+  _id: string;
+  _type: 'fullWidthTextSection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  text?: RichText;
+};
 
 export type Hero = {
-  _id: string
-  _type: 'hero'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  mainContent?: RichText
-  subtitle?: string
+  _id: string;
+  _type: 'hero';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  mainContent?: RichText;
+  subtitle?: string;
   ctaButton?: {
-    label?: string
-    href?: string
-  }
+    label?: string;
+    href?: string;
+  };
   backgroundImage?: {
     asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
   mobileBackgroundImage?: {
     asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-}
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+};
 
 export type Seo = {
-  _type: 'seo'
-  title?: string
-  description?: string
-  keywords?: Array<string>
+  _type: 'seo';
+  title?: string;
+  description?: string;
+  keywords?: Array<string>;
   openGraph?: {
-    title?: string
-    description?: string
+    title?: string;
+    description?: string;
     image?: {
       asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-    type?: 'website' | 'article' | 'product'
-  }
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: 'image';
+    };
+    type?: 'website' | 'article' | 'product';
+  };
   twitter?: {
-    cardType?: 'summary' | 'summary_large_image'
-    site?: string
-    creator?: string
-  }
-  canonical?: string
-  noIndex?: boolean
-  noFollow?: boolean
-}
+    cardType?: 'summary' | 'summary_large_image';
+    site?: string;
+    creator?: string;
+  };
+  canonical?: string;
+  noIndex?: boolean;
+  noFollow?: boolean;
+};
 
 export type HomePage = {
-  _id: string
-  _type: 'homePage'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  title?: string
-  seo?: Seo
+  _id: string;
+  _type: 'homePage';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  seo?: Seo;
   sections?: Array<
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'hero'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'hero';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'fullWidthTextSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'fullWidthTextSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'cardsSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'cardsSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'scrollableSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'scrollableSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'duplexSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'duplexSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'testimonialsSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'testimonialsSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'FAQSection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'FAQSection';
       }
     | {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'calendlySection'
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'calendlySection';
       }
-  >
-}
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: 'infiniteCarouselSection';
+      }
+  >;
+};
 
 export type Footer = {
-  _id: string
-  _type: 'footer'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
+  _id: string;
+  _type: 'footer';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
   logo?: {
     asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  copyrightText?: string
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  copyrightText?: string;
   navigation?: Array<{
-    label?: string
-    href?: string
-    _type: 'navigationLink'
-    _key: string
-  }>
-}
+    label?: string;
+    href?: string;
+    _type: 'navigationLink';
+    _key: string;
+  }>;
+};
 
 export type Header = {
-  _id: string
-  _type: 'header'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
+  _id: string;
+  _type: 'header';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
   logo?: {
     asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
   navigation?: Array<{
-    label?: string
-    href?: string
-    _type: 'navigationLink'
-    _key: string
-  }>
+    label?: string;
+    href?: string;
+    _type: 'navigationLink';
+    _key: string;
+  }>;
   ctaButton?: {
-    label?: string
-    href?: string
-  }
-}
+    label?: string;
+    href?: string;
+  };
+};
 
 export type SanityImagePaletteSwatch = {
-  _type: 'sanity.imagePaletteSwatch'
-  background?: string
-  foreground?: string
-  population?: number
-  title?: string
-}
+  _type: 'sanity.imagePaletteSwatch';
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
 
 export type SanityImagePalette = {
-  _type: 'sanity.imagePalette'
-  darkMuted?: SanityImagePaletteSwatch
-  lightVibrant?: SanityImagePaletteSwatch
-  darkVibrant?: SanityImagePaletteSwatch
-  vibrant?: SanityImagePaletteSwatch
-  dominant?: SanityImagePaletteSwatch
-  lightMuted?: SanityImagePaletteSwatch
-  muted?: SanityImagePaletteSwatch
-}
+  _type: 'sanity.imagePalette';
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
 
 export type SanityImageDimensions = {
-  _type: 'sanity.imageDimensions'
-  height?: number
-  width?: number
-  aspectRatio?: number
-}
+  _type: 'sanity.imageDimensions';
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
+};
 
 export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
-}
+  _type: 'sanity.imageMetadata';
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
+};
 
 export type SanityFileAsset = {
-  _id: string
-  _type: 'sanity.fileAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  source?: SanityAssetSourceData
-}
+  _id: string;
+  _type: 'sanity.fileAsset';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+};
 
 export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
-  name?: string
-  id?: string
-  url?: string
-}
+  _type: 'sanity.assetSourceData';
+  name?: string;
+  id?: string;
+  url?: string;
+};
 
 export type SanityImageAsset = {
-  _id: string
-  _type: 'sanity.imageAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  metadata?: SanityImageMetadata
-  source?: SanityAssetSourceData
-}
+  _id: string;
+  _type: 'sanity.imageAsset';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
+};
 
 export type Geopoint = {
-  _type: 'geopoint'
-  lat?: number
-  lng?: number
-  alt?: number
-}
+  _type: 'geopoint';
+  lat?: number;
+  lng?: number;
+  alt?: number;
+};
 
 export type Slug = {
-  _type: 'slug'
-  current?: string
-  source?: string
-}
+  _type: 'slug';
+  current?: string;
+  source?: string;
+};
 
 export type AllSanitySchemaTypes =
+  | InfiniteCarouselSection
+  | InfiniteCarouselRow
+  | SanityImageCrop
+  | SanityImageHotspot
   | CalendlySection
   | RichText
   | FAQSection
   | TestimonialsSection
-  | SanityImageCrop
-  | SanityImageHotspot
   | DuplexSection
   | ScrollableSection
   | CardsSection
@@ -521,5 +563,5 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint
-  | Slug
-export declare const internalGroqTypeReferenceTo: unique symbol
+  | Slug;
+export declare const internalGroqTypeReferenceTo: unique symbol;

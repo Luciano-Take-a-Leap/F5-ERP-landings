@@ -7,6 +7,7 @@ import type {
   TestimonialsSection,
   CalendlySection,
   FullWidthTextSection,
+  InfiniteCarouselSection,
 } from './sanity.types';
 
 type BaseSectionType = {
@@ -25,7 +26,8 @@ export type HomePageSection =
   | (TestimonialsSection & BaseSectionType & { _type: 'testimonialsSection' })
   | (FullWidthTextSection & BaseSectionType & { _type: 'fullWidthTextSection' })
   | (CalendlySection & BaseSectionType & { _type: 'calendlySection' })
-  | (FAQSection & BaseSectionType & { _type: 'FAQSection' });
+  | (FAQSection & BaseSectionType & { _type: 'FAQSection' })
+  | (InfiniteCarouselSection & BaseSectionType & { _type: 'infiniteCarouselSection' });
 
 export type HomePageData = {
   sections: HomePageSection[];
@@ -53,6 +55,10 @@ export type ComponentPropsMap = {
     data: CalendlySection & BaseSectionType & { _type: 'calendlySection' };
   };
   FAQSection: { data: FAQSection & BaseSectionType & { _type: 'FAQSection' } };
+  infiniteCarouselSection: {
+    data: InfiniteCarouselSection &
+      BaseSectionType & { _type: 'infiniteCarouselSection' };
+  };
 };
 
 export type GetComponentProps<T extends keyof ComponentPropsMap> = ComponentPropsMap[T];
@@ -103,4 +109,11 @@ export function isFAQSection(
   section: HomePageSection
 ): section is FAQSection & BaseSectionType & { _type: 'FAQSection' } {
   return section._type === 'FAQSection';
+}
+
+export function isInfiniteCarouselSection(
+  section: HomePageSection
+): section is InfiniteCarouselSection &
+  BaseSectionType & { _type: 'infiniteCarouselSection' } {
+  return section._type === 'infiniteCarouselSection';
 }
