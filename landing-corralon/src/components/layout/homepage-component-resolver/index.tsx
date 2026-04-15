@@ -10,6 +10,7 @@ import {
   isFullWidthTextSection,
   isScrollableSection,
   isTestimonialsSection,
+  isInfiniteCarouselSection,
 } from '@/landing-corralon/types';
 import Hero from '@ui/Hero';
 import FAQSection from '@ui/Faq';
@@ -28,6 +29,7 @@ import RichText from '../rich-text-renderer';
 import Tag from '@ui/Tag';
 import TestimonialCard from '@ui/TestimonialCard';
 import CalendlySection from '@ui/CalendlySection';
+import InfiniteCarouselSection from '@ui/InfiniteCarouselSection';
 
 type ComponentResolverProps = {
   sections: HomePageSection[];
@@ -39,6 +41,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
     return null;
   }
 
+  console.log({ sections });
   return (
     <>
       {sections.map((section, index) => {
@@ -52,11 +55,13 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             backgroundImage,
             ctaButton,
           } = section;
-          console.log({mainContent})
+
           return (
             <Hero
               key={sectionKey}
-              title={<RichText value={mainContent} textClassName='text-5xl md:text-6xl' />}
+              title={
+                <RichText value={mainContent} textClassName="text-5xl md:text-6xl" />
+              }
               description={subtitle}
               mobileBackgroundImage={
                 mobileBackgroundImage
@@ -142,6 +147,23 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             <FullWidthText key={section._id}>
               <RichText value={section.text} />
             </FullWidthText>
+          );
+        }
+
+        if (isInfiniteCarouselSection(section)) {
+          return (
+            <InfiniteCarouselSection
+              key={sectionKey}
+              title={section.title}
+              data={
+                section.rows?.map((row) => ({
+                  _key: row._key,
+                  speed: row.speed,
+                  direction: row.direction,
+                  items: row.items?.map((item) => generateSanityImageUrl(item)) || [],
+                })) || []
+              }
+            />
           );
         }
 

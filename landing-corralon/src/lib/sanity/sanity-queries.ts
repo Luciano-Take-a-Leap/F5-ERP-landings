@@ -182,6 +182,24 @@ export const testimonialsSectionQuery = groq`
   }
 `;
 
+export const infiniteCarouselSectionQuery = groq`
+  *[_type == "infiniteCarouselSection"][0]{
+    title,
+    rows[]{
+      items[]{
+        asset->{url},
+        media,
+        hotspot,
+        crop,
+        _key
+      },
+      speed,
+      direction,
+      _key
+    }
+  }
+`;
+
 export const homePageSectionsQuery = groq`
   *[_type == "homePage"][0]{
     sections[]->{
@@ -242,6 +260,21 @@ export const homePageSectionsQuery = groq`
       _type == "calendlySection" => {
         title,
         calendlyLink
+      },
+      _type == "infiniteCarouselSection" => {
+        title,
+        rows[]{
+          items[]{
+            asset->{url},
+            media,
+            hotspot,
+            crop,
+            _key
+          },
+          speed,
+          direction,
+          _key
+        }
       },
       _type == "scrollableSection" => {
         tag,

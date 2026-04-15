@@ -7,6 +7,7 @@ import TFullWidthTextSection from './fullWidthTextSection'
 import THeader from './header'
 import THero from './hero'
 import THomePage from './homepage'
+import {TInfiniteCarouselRow, TInfiniteCarouselSection} from './infiniteCarouselSection'
 import TRichText from './richText'
 import TScrollableSection from './scrollableSection'
 import TSEO from './SEO'
@@ -26,4 +27,6 @@ export const schemaTypes = [
   TTestimonialsSection,
   TFAQsSection,
   TCalendlySection,
+  TInfiniteCarouselRow,
+  TInfiniteCarouselSection,
 ]
