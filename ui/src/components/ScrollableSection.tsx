@@ -61,7 +61,7 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
   const currentImage = subsections[visibleIndex]?.image;
 
   return (
-    <section className="w-full py-24" id={id}>
+    <section className="w-full py-10" id={id}>
       <div className="mb-12 flex flex-col items-start gap-4">
         {tag}
         <h2 className="text-4xl font-bold tracking-tight">{title}</h2>
