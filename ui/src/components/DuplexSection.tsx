@@ -70,7 +70,7 @@ function DuplexSection({
   );
 
   return (
-    <section className="w-full py-12 overflow-hidden" id={id}>
+    <section className="w-full py-10 overflow-hidden" id={id}>
       {tag}
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
         {title}

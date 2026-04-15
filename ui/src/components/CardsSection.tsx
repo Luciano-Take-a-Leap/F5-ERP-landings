@@ -19,7 +19,7 @@ const CardSection: React.FC<CardSectionProps> = ({
   id,
 }) => {
   return (
-    <section className="w-full bg-black py-20" id={id}>
+    <section className="w-full bg-black py-10" id={id}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
             <h3>{tag}</h3>

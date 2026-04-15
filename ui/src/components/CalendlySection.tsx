@@ -21,7 +21,7 @@ function CalendlySection({ title, calendlyUrl, id }: CalendlySectionProps) {
   }, []);
 
   return (
-    <section className="w-full py-16 flex items-center justify-center text-center" id={id}>
+    <section className="w-full py-10 flex items-center justify-center text-center" id={id}>
       <div className="mx-auto w-full px-4">
         <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12">
           {title}

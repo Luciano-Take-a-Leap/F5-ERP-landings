@@ -21,7 +21,7 @@ const InfiniteCarouselSection: React.FC<InfiniteCarouselSectionProps> = ({
   if (!data?.length) return null;
 
   return (
-    <section className={cn('relative w-full overflow-hidden py-8')}>
+    <section className={cn('relative w-full overflow-hidden py-10')}>
       <div
         className="pointer-events-none absolute inset-0"
         style={{

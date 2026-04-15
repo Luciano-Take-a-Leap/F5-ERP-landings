@@ -19,7 +19,7 @@ const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24" id={id}>
+    <section className="w-full py-10" id={id}>
       <div className="mx-auto w-full max-w-6xl px-4">
         <h2 className="mb-20 text-center text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           {title}
