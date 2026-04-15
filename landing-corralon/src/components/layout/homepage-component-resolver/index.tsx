@@ -40,8 +40,6 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
   if (!sections || sections.length === 0) {
     return null;
   }
-
-  console.log({ sections });
   return (
     <>
       {sections.map((section, index) => {
@@ -156,11 +154,19 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               key={sectionKey}
               title={section.title}
               data={
-                section.rows?.map((row) => ({
-                  _key: row._key,
+                section.rows?.map((row, index) => ({
+                  _key: `${row._key}-${index}`,
                   speed: row.speed,
+                  items:
+                    (row.items?.length || 0) > 0
+                      ? Array.from(
+                          { length: Math.ceil(25 / (row.items?.length || 1)) },
+                          () => row.items || []
+                        )
+                          .flat()
+                          .map((item) => generateSanityImageUrl(item))
+                      : [],
                   direction: row.direction,
-                  items: row.items?.map((item) => generateSanityImageUrl(item)) || [],
                 })) || []
               }
             />
