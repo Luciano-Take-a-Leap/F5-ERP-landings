@@ -1,11 +1,11 @@
-import React from 'react';
-import { cn } from '../lib/utils';
-import InfiniteCarousel from './InfiniteCarousel';
+import React from "react";
+import { cn } from "../lib/utils";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 interface InfiniteCarouselRow {
   _key: string;
-  speed?: 'slow' | 'medium' | 'fast';
-  direction?: 'leftToRight' | 'rightToLeft';
+  speed?: "slow" | "medium" | "fast";
+  direction?: "leftToRight" | "rightToLeft";
   items: string[];
 }
 
@@ -21,14 +21,14 @@ const InfiniteCarouselSection: React.FC<InfiniteCarouselSectionProps> = ({
   if (!data?.length) return null;
 
   return (
-    <section className={cn('w-full flex flex-col gap-4 py-8 overflow-hidden')}>
+    <section className={cn("w-full overflow-hidden py-8")}>
       {title && (
-        <h2 className="px-6 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+        <h2 className="mb-6 px-6 text-center text-xl font-semibold tracking-tight">
           {title}
         </h2>
       )}
 
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex w-full flex-col gap-3">
         {data.map((row) => (
           <InfiniteCarousel
             key={row._key}
