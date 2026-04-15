@@ -17,6 +17,7 @@
   --foreground: #ffffff;
 
   --radius: 0.375rem;
+  --animate-marquee-left: marquee-left var(--duration, 45s) linear infinite;
 }
 
 @theme inline {
@@ -41,4 +42,13 @@ body {
 .icon-chip {
   background: var(--icon-bg);
   color: var(--icon-color);
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
 }

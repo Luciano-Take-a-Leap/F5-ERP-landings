@@ -7,24 +7,25 @@ interface InfiniteCarouselProps {
   direction?: 'leftToRight' | 'rightToLeft';
   items: string[];
   className?: string;
+  gap?: string;
 }
-
-const SPEED_MAP: Record<NonNullable<InfiniteCarouselProps['speed']>, string> = {
-  slow: '45s',
-  medium: '25s',
-  fast: '12s',
-};
 
 const range = (length: number): number[] => Array.from({ length }, (_, i) => i);
 
 const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
   speed = 'medium',
-  direction = 'leftToRight',
+  direction = 'righToLeft',
   items,
   className,
+  gap = '1rem',
 }) => {
-  const duration = SPEED_MAP[speed ?? 'medium'];
-  const isReverse = direction === 'leftToRight';
+  const isReverse = direction.includes('leftToRight');
+
+  const getDuration = () => {
+    if (speed.includes('slow')) return '50s';
+    if (speed.includes('fast')) return '30s';
+    return '40s';
+  };
 
   return (
     <div className={cn('group flex overflow-hidden w-full', className)}>
@@ -33,18 +34,18 @@ const InfiniteCarousel: React.FC<InfiniteCarouselProps> = ({
           key={n}
           className={cn(
             'flex shrink-0 flex-row justify-around gap-[var(--gap)]',
-            'animate-marquee-left py-3',
-            'group-hover:[animation-play-state:paused]'
+            'animate-marquee-left py-3 transform',
+            isReverse && 'direction-reverse'
           )}
           style={
             {
-              animationDuration: duration,
-              animationDirection: isReverse ? 'reverse' : 'normal',
+              '--gap': gap,
+              '--duration': getDuration(),
             } as React.CSSProperties
           }
         >
-          {items.map((item) => (
-            <InfiniteCarouselItem key={item} imageUrl={item} />
+          {items.map((item, index) => (
+            <InfiniteCarouselItem key={`${item}-${index}`} imageUrl={item} />
           ))}
         </div>
       ))}

@@ -21,14 +21,37 @@ const InfiniteCarouselSection: React.FC<InfiniteCarouselSectionProps> = ({
   if (!data?.length) return null;
 
   return (
-    <section className={cn('w-full flex flex-col gap-4 py-8 overflow-hidden')}>
+    <section className={cn('relative w-full overflow-hidden py-8')}>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #9ca3af 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+          maskImage:
+            'radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 100%)',
+        }}
+      />
+
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32"
+        style={{
+          background: 'linear-gradient(to right, var(--color-background), transparent)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32"
+        style={{
+          background: 'linear-gradient(to left, var(--color-background), transparent)',
+        }}
+      />
+
       {title && (
-        <h2 className="px-6 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-          {title}
-        </h2>
+        <h2 className="relative z-20 px-6 text-center text-xl tracking-tight">{title}</h2>
       )}
 
-      <div className="flex flex-col gap-3 w-full">
+      <div className="relative flex w-full flex-col gap-3">
         {data.map((row) => (
           <InfiniteCarousel
             key={row._key}
