@@ -2,19 +2,19 @@
 @import '@ui/src/app/globals.css';
 @source "../../../ui/src";
 :root {
-  --primary: #007bff;
+  --primary: #00e6bb;
   --primary-foreground: #ffffff;
-  --primary-dark: #0056b3;
+  --primary-dark: #108771;
 
   --background: #000000;
   --card-dark-background: #18181b;
-  --card-from: #007bff10;
-  --card-to: #007bff00;
-
-  --icon-bg: #001f3f;
-  --icon-color: var(--primary);
 
   --foreground: #ffffff;
+
+  --card-from: #001612;
+  --card-to: #000000;
+  --icon-color: var(--primary);
+  --icon-bg: #00261f;
 
   --radius: 0.375rem;
   --animate-marquee-left: marquee-left var(--duration, 45s) linear infinite;

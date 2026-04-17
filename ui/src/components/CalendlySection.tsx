@@ -16,20 +16,21 @@ function CalendlySection({ title, calendlyUrl, id }: CalendlySectionProps) {
     const raw = getComputedStyle(document.documentElement)
       .getPropertyValue('--primary')
       .trim();
-      //eslint-disable-next-line
+    //eslint-disable-next-line
     setPrimaryColor(raw.replace('#', '') || '007bff');
   }, []);
 
   return (
-    <section className="w-full py-10 flex items-center justify-center text-center" id={id}>
+    <section
+      className="w-full py-10 flex items-center justify-center text-center"
+      id={id}
+    >
       <div className="mx-auto w-full px-4">
-        <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12">
-          {title}
-        </h2>
+        <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12">{title}</h2>
         {primaryColor && (
           <InlineWidget
             url={calendlyUrl}
-            pageSettings={{ primaryColor }}
+            pageSettings={{ primaryColor, backgroundColor: '0d0d0d', textColor: 'ffffff' }}
             styles={{ height: '900px', width: '100%' }}
           />
         )}

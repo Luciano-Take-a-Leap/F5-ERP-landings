@@ -58,7 +58,11 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             <Hero
               key={sectionKey}
               title={
-                <RichText value={mainContent} textClassName="text-5xl md:text-6xl" />
+                <RichText
+                  value={mainContent}
+                  textClassName="text-5xl md:text-7xl leading-none"
+                  className="[&_h1]:mb-0 [&_h1]:-mt-2"
+                />
               }
               description={subtitle}
               mobileBackgroundImage={
@@ -70,7 +74,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               button={
                 ctaButton ? (
                   <Button
-                    className="font-extrabold p-5"
+                    className="font-extrabold p-5 text-black"
                     size="lg"
                     onClick={() => navigateToLink(ctaButton.href || '', router)}
                   >
@@ -110,7 +114,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               ctaButton={
                 section.ctaButton ? (
                   <Button
-                    className="font-extrabold p-5"
+                    className="font-extrabold p-5 text-black"
                     size="lg"
                     onClick={() => navigateToLink(section.ctaButton?.href || '', router)}
                   >
@@ -222,6 +226,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
         if (isCalendlySection(section)) {
           return (
             <CalendlySection
+              id="calendly"
               key={section._key}
               title={<RichText value={section.title} />}
               calendlyUrl={section.calendlyLink || ''}

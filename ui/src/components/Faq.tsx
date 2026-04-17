@@ -31,7 +31,7 @@ const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
             return (
               <div
                 key={item.question}
-                className="overflow-hidden rounded-2xl border border-white/10"
+                className="overflow-hidden rounded-2xl border border-white/10 bg-background transition-all duration-300"
               >
                 <button
                   type="button"
