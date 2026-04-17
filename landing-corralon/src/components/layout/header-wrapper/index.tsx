@@ -27,7 +27,7 @@ const HeaderWrapper = ({ logo, menuItems, ctaButton }: HeaderWrapperProps) => {
       ctaButton={
         ctaButton ? (
           <Button
-            className="font-extrabold p-5"
+            className="font-extrabold p-5 text-black"
             size="lg"
             onClick={() => navigateToLink(ctaButton?.href || '', router)}
           >

@@ -30,7 +30,9 @@ const Header: React.FC<HeaderProps> = ({ logo, menuItems, ctaButton, id }) => {
   return (
     <>
       <header
-        className="w-full py-3 px-4 md:px-12 lg:px-20 fixed top-0 left-0 z-50 bg-black/70 backdrop-blur-xs"
+        className="w-full py-3 px-4 md:px-12 lg:px-20 fixed top-0 left-0 z-50"
+          style={{ background: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(23, 23, 23) 100%)' }}
+
         id={id}
       >
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto md:justify-around md:gap-8">

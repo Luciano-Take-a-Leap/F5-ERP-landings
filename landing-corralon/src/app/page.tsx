@@ -14,6 +14,24 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black relative">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          //dots
+          backgroundColor: '#0a0a0a',
+          backgroundImage:
+            'radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+
+          //grid
+          // backgroundImage:
+          //   'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          // backgroundSize: '40px 40px',
+
+          // radial gradient
+          // background: 'radial-gradient(ellipse at 50% 40%, #10877138 0%, #0a0a0a 90%)',
+        }}
+      />
       <HeaderWrapper
         logo={headerData?.logo}
         menuItems={headerData?.navigation}

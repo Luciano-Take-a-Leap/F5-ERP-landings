@@ -8,7 +8,7 @@ export interface CardProps {
 
 const Card: React.FC<CardProps> = ({ icon, title, description }) => {
   return (
-    <div className="rounded-2xl border border-primary/20 p-8 card-gradient">
+    <div className="rounded-2xl border border-primary/20 p-8 card-gradient z-10">
       {icon ? (
         <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-icon-bg text-primary font-extrabold">
           {getIcon(icon)}
