@@ -25,13 +25,13 @@ const InfiniteCarouselSection: React.FC<InfiniteCarouselSectionProps> = ({
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32"
         style={{
-          background: 'linear-gradient(to right, #0a0a0a, transparent)',
+          background: 'linear-gradient(to right, var(--color-background), transparent)',
         }}
       />
       <div
         className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32"
         style={{
-          background: 'linear-gradient(to left, #0a0a0a, transparent)',
+          background: 'linear-gradient(to left, var(--color-background), transparent)',
         }}
       />
 
