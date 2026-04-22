@@ -14,3 +14,4 @@ export * from './components/Header';
 export * from './components/CalendlySection';
 export * from './components/Footer';
 export * from './components/InfiniteCarouselSection';
+export * from './components/IntegrationSection';

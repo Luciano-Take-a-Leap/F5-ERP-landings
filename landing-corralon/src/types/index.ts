@@ -8,6 +8,7 @@ import type {
   CalendlySection,
   FullWidthTextSection,
   InfiniteCarouselSection,
+  IntegrationsSection,
 } from './sanity.types';
 
 type BaseSectionType = {
@@ -27,7 +28,8 @@ export type HomePageSection =
   | (FullWidthTextSection & BaseSectionType & { _type: 'fullWidthTextSection' })
   | (CalendlySection & BaseSectionType & { _type: 'calendlySection' })
   | (FAQSection & BaseSectionType & { _type: 'FAQSection' })
-  | (InfiniteCarouselSection & BaseSectionType & { _type: 'infiniteCarouselSection' });
+  | (InfiniteCarouselSection & BaseSectionType & { _type: 'infiniteCarouselSection' })
+  | (IntegrationsSection & BaseSectionType & { _type: 'integrationsSection' });
 
 export type HomePageData = {
   sections: HomePageSection[];
@@ -58,6 +60,9 @@ export type ComponentPropsMap = {
   infiniteCarouselSection: {
     data: InfiniteCarouselSection &
       BaseSectionType & { _type: 'infiniteCarouselSection' };
+  };
+  integrationsSection: {
+    data: IntegrationsSection & BaseSectionType & { _type: 'integrationsSection' };
   };
 };
 
@@ -116,4 +121,10 @@ export function isInfiniteCarouselSection(
 ): section is InfiniteCarouselSection &
   BaseSectionType & { _type: 'infiniteCarouselSection' } {
   return section._type === 'infiniteCarouselSection';
+}
+
+export function isIntegrationsSection(
+  section: HomePageSection
+): section is IntegrationsSection & BaseSectionType & { _type: 'integrationsSection' } {
+  return section._type === 'integrationsSection';
 }

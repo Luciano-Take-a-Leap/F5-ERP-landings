@@ -11,6 +11,7 @@ import {
   isScrollableSection,
   isTestimonialsSection,
   isInfiniteCarouselSection,
+  isIntegrationsSection,
 } from '@/landing-corralon/types';
 import Hero from '@ui/Hero';
 import FAQSection from '@ui/Faq';
@@ -30,6 +31,7 @@ import Tag from '@ui/Tag';
 import TestimonialCard from '@ui/TestimonialCard';
 import CalendlySection from '@ui/CalendlySection';
 import InfiniteCarouselSection from '@ui/InfiniteCarouselSection';
+import IntegrationSection from '@ui/IntegrationSection';
 
 type ComponentResolverProps = {
   sections: HomePageSection[];
@@ -149,6 +151,27 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             <FullWidthText key={section._id}>
               <RichText value={section.text} />
             </FullWidthText>
+          );
+        }
+
+        if (isIntegrationsSection(section)) {
+          return (
+            <IntegrationSection
+              key={sectionKey}
+              title={<RichText value={section.title} />}
+              mainImage={generateSanityImageUrl(section.mainImage)}
+              data={
+                section.orbits?.map((orbit) => ({
+                  key: orbit._key,
+                  direction: orbit.direction,
+                  items: orbit.items?.map((item) => ({
+                    key: item._key,
+                    image: generateSanityImageUrl(item.image),
+                    altText: item.alt || '',
+                  })),
+                })) || []
+              }
+            />
           );
         }
 

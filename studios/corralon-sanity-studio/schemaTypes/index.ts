@@ -8,6 +8,7 @@ import THeader from './header'
 import THero from './hero'
 import THomePage from './homepage'
 import {TInfiniteCarouselRow, TInfiniteCarouselSection} from './infiniteCarouselSection'
+import TIntegrationsSection from './integrationsSection'
 import TRichText from './richText'
 import TScrollableSection from './scrollableSection'
 import TSEO from './SEO'
@@ -29,4 +30,5 @@ export const schemaTypes = [
   TCalendlySection,
   TInfiniteCarouselRow,
   TInfiniteCarouselSection,
+  TIntegrationsSection,
 ]

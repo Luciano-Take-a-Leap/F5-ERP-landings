@@ -13,6 +13,95 @@
  */
 
 // Source: schema.json
+export type IntegrationsSection = {
+  _id: string
+  _type: 'integrationsSection'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: RichText
+  mainImage?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  orbits?: Array<{
+    direction?: 'clockwise' | 'counterclockwise'
+    items?: Array<{
+      image?: {
+        asset?: {
+          _ref: string
+          _type: 'reference'
+          _weak?: boolean
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+        }
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        _type: 'image'
+      }
+      alt?: string
+      _type: 'orbitItem'
+      _key: string
+    }>
+    _type: 'orbit'
+    _key: string
+  }>
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
+export type RichText = Array<{
+  children?: Array<{
+    marks?: Array<string>
+    text?: string
+    _type: 'span'
+    _key: string
+  }>
+  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | 'code'
+  listItem?: 'bullet' | 'number'
+  markDefs?: Array<
+    | {
+        href?: string
+        blank?: boolean
+        _type: 'link'
+        _key: string
+      }
+    | {
+        lineHeight?: 'normal' | 'relaxed' | 'tight'
+        highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue'
+        textColor?: 'black' | 'white' | 'primary' | 'gray'
+        fontFamily?: 'inter'
+        _type: 'textSettings'
+        _key: string
+      }
+  >
+  level?: number
+  _type: 'block'
+  _key: string
+}>
+
 export type InfiniteCarouselSection = {
   _id: string
   _type: 'infiniteCarouselSection'
@@ -46,22 +135,6 @@ export type InfiniteCarouselRow = {
   direction?: 'leftToRight' | 'rightToLeft'
 }
 
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
 export type CalendlySection = {
   _id: string
   _type: 'calendlySection'
@@ -71,36 +144,6 @@ export type CalendlySection = {
   title?: RichText
   calendlyLink?: string
 }
-
-export type RichText = Array<{
-  children?: Array<{
-    marks?: Array<string>
-    text?: string
-    _type: 'span'
-    _key: string
-  }>
-  style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote' | 'code'
-  listItem?: 'bullet' | 'number'
-  markDefs?: Array<
-    | {
-        href?: string
-        blank?: boolean
-        _type: 'link'
-        _key: string
-      }
-    | {
-        lineHeight?: 'normal' | 'relaxed' | 'tight'
-        highlightBox?: 'none' | 'white' | 'black' | 'orange' | 'blue' | 'dark-blue'
-        textColor?: 'black' | 'white' | 'primary' | 'gray'
-        fontFamily?: 'inter'
-        _type: 'textSettings'
-        _key: string
-      }
-  >
-  level?: number
-  _type: 'block'
-  _key: string
-}>
 
 export type FAQSection = {
   _id: string
@@ -375,6 +418,13 @@ export type HomePage = {
         _key: string
         [internalGroqTypeReferenceTo]?: 'infiniteCarouselSection'
       }
+    | {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        _key: string
+        [internalGroqTypeReferenceTo]?: 'integrationsSection'
+      }
   >
 }
 
@@ -538,12 +588,13 @@ export type Slug = {
 }
 
 export type AllSanitySchemaTypes =
-  | InfiniteCarouselSection
-  | InfiniteCarouselRow
+  | IntegrationsSection
   | SanityImageCrop
   | SanityImageHotspot
-  | CalendlySection
   | RichText
+  | InfiniteCarouselSection
+  | InfiniteCarouselRow
+  | CalendlySection
   | FAQSection
   | TestimonialsSection
   | DuplexSection

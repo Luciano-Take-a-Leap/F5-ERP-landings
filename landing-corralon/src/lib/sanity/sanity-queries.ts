@@ -200,6 +200,28 @@ export const infiniteCarouselSectionQuery = groq`
   }
 `;
 
+export const integrationsSectionQuery = groq`
+  *[_type == "integrationsSection"][0]{
+    title,
+    mainImage{
+      asset->{url},
+      alt
+    },
+    orbits[]{
+      direction,
+      items[]{
+        image{
+          asset->{url},
+          alt
+        },
+        alt,
+        _key
+      },
+      _key
+    }
+  }
+`;
+
 export const homePageSectionsQuery = groq`
   *[_type == "homePage"][0]{
     sections[]->{
@@ -273,6 +295,25 @@ export const homePageSectionsQuery = groq`
           },
           speed,
           direction,
+          _key
+        }
+      },
+      _type == "integrationsSection" => {
+        title,
+        mainImage{
+          asset->{url},
+          alt
+        },
+        orbits[]{
+          direction,
+          items[]{
+            image{
+              asset->{url},
+              alt
+            },
+            alt,
+            _key
+          },
           _key
         }
       },

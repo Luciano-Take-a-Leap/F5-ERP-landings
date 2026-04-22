@@ -6,7 +6,6 @@ import { generateSanityImageUrl } from '../utils/generate-sanity-image-url';
 import HeaderWrapper from '../components/layout/header-wrapper';
 import ComponentResolver from '../components/layout/homepage-component-resolver';
 import { HomePageSection, isHeroSection } from '../types';
-import IntegrationHub from '../components/integrations/IntegrationHub';
 
 export default async function Home() {
   const headerData = await getHeaderData();
@@ -45,7 +44,6 @@ export default async function Home() {
           ) as unknown as HomePageSection[]) || []
         }
       />
-      <IntegrationHub />
       <div className="max-w-7xl w-full px-6 md:px:none">
         <ComponentResolver
           sections={

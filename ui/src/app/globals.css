@@ -149,3 +149,36 @@
     transform: translateX(calc(-100% - var(--gap)));
   }
 }
+
+/* Orbital animations */
+@keyframes cw {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ccw {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulse-out {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0;   }
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  animation: var(--orbit-anim) var(--orbit-dur) linear infinite;
+}
+
+.orbit-item {
+  position: absolute;
+  animation: var(--orbit-counter-anim) var(--orbit-dur) linear infinite;
+}
+
+.orbit-pulse {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  pointer-events: none;
+  animation: pulse-out 3s ease-out infinite var(--orbit-delay);
+}
