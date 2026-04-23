@@ -282,6 +282,9 @@ export type Hero = {
   _updatedAt: string
   _rev: string
   mainContent?: RichText
+  video?: {
+    url?: string
+  }
   subtitle?: string
   ctaButton?: {
     label?: string

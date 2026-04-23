@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import VimeoPlayer from './VimeoPlayer';
 
 interface HeroProps {
   title: React.ReactNode;
@@ -8,6 +9,7 @@ interface HeroProps {
   backgroundImage: string;
   mobileBackgroundImage?: string;
   button: React.ReactNode;
+  video?: string;
   id?: string;
 }
 
@@ -17,11 +19,12 @@ const Hero: React.FC<HeroProps> = ({
   backgroundImage,
   mobileBackgroundImage,
   button,
+  video,
   id,
 }) => {
   return (
     <div
-      className="relative w-full md:max-h-[640px] h-[80vh] flex items-center justify-center"
+      className="relative w-full h-auto flex items-center justify-center pt-16 pb-10"
       id={id}
     >
       <Image
@@ -37,9 +40,10 @@ const Hero: React.FC<HeroProps> = ({
         className="object-cover md:hidden"
       />
       <div className="absolute inset-0 hero-gradient" />
-      <div className="relative z-10 text-center px-4 flex flex-col items-center">
-        <div className="mb-4">{title}</div>
-        <p className="text-lg md:text-xl mb-12 max-w-lg">{description}</p>
+      <div className="relative z-10 text-center px-4 flex flex-col items-center gap-2">
+        {title}
+        <p className="text-lg md:text-xl max-w-lg">{description}</p>
+        {video ? <VimeoPlayer key={video} url={video} /> : null}
         {button}
       </div>
     </div>

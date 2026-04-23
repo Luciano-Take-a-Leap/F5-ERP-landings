@@ -12,6 +12,20 @@ const THero = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      type: 'object',
+      name: 'video',
+      title: 'Video',
+      description: 'Enlace a un video externo (Vimeo)',
+      fields: [
+        {
+          name: 'url',
+          title: 'URL del Video',
+          type: 'url',
+          validation: (Rule) => Rule.uri({allowRelative: false, scheme: ['https']}),
+        },
+      ],
+    }),
+    defineField({
       name: 'subtitle',
       title: 'Subtítulo',
       type: 'string',

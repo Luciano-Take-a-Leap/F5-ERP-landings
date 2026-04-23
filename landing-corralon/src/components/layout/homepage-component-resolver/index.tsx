@@ -67,6 +67,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
                 />
               }
               description={subtitle}
+              video={section.video?.url}
               mobileBackgroundImage={
                 mobileBackgroundImage
                   ? generateSanityImageUrl(mobileBackgroundImage)

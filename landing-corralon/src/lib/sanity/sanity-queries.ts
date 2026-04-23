@@ -76,6 +76,7 @@ export const homePageSEOQuery = groq`
 export const heroQuery = groq`
   *[_type == "hero"][0]{
     subtitle,
+    video,
     mainContent,
     ctaButton{
       label,
@@ -230,6 +231,7 @@ export const homePageSectionsQuery = groq`
       _key,
       _type == "hero" => {
         subtitle,
+        video,
         mainContent,
         ctaButton{
           label,
