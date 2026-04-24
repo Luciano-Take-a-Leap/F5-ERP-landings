@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "@/landing-supermercado/*": ["./src/*"],
+      "@/landing-corralon/*": ["./src/*"],
       "@ui": ["../ui/src/index.ts"],
       "@ui/*": ["../ui/src/components/*"]
     }
