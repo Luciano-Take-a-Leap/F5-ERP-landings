@@ -61,7 +61,14 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
   const currentImage = subsections[visibleIndex]?.image;
 
   return (
-    <section className="w-full py-10" id={id}>
+    <section className="w-full max-w-7xl px-6 md:px-0 py-10 relative" id={id}>
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundSize: '20px 20px',
+          background: 'radial-gradient(ellipse at 50% 50%, #11665738 20%, #000000 70%)',
+        }}
+      />
       <div className="mb-12 flex flex-col items-start gap-4">
         {tag}
         <h2 className="text-4xl font-bold tracking-tight">{title}</h2>

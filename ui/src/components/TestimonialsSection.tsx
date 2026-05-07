@@ -19,7 +19,7 @@ const TestimonialsSection = ({ title, cards, id }: TestimonialsSectionProps) => 
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
   return (
-    <section className="w-full py-10 overflow-hidden" id={id}>
+    <section className="w-full max-w-7xl px-6 md:px-0 py-10 overflow-hidden" id={id}>
       <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 text-center">
         {title}
       </h2>

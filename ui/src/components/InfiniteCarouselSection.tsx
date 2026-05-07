@@ -21,7 +21,19 @@ const InfiniteCarouselSection: React.FC<InfiniteCarouselSectionProps> = ({
   if (!data?.length) return null;
 
   return (
-    <section className={cn('relative w-full overflow-hidden py-10')}>
+    <section className={cn('relative w-full max-w-7xl overflow-hidden py-10')}>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #9ca3af 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+          maskImage:
+            'radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 50% 50% at 50% 50%, black 10%, transparent 100%)',
+        }}
+      />
+
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32"
         style={{
