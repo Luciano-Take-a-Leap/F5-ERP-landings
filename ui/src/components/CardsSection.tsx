@@ -17,11 +17,11 @@ const CardSection: React.FC<CardSectionProps> = ({ tag, title, subtitle, cards, 
       <div className="mx-auto max-w-7xl px-6 md:px-0 ">
         <div className="mb-14">
           <h3>{tag}</h3>
-          <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white md:text-4xl">
+          <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white">
             {title}
           </h2>
 
-          <p className="mt-4 max-w-[3000px] md:text-xl text-sm text-zinc-400">
+          <p className="mt-4 max-w-[3000px] md:text-xl text-md text-zinc-400">
             {subtitle}
           </p>
         </div>
