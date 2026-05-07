@@ -32,7 +32,8 @@ import TestimonialCard from '@ui/TestimonialCard';
 import CalendlySection from '@ui/CalendlySection';
 import InfiniteCarouselSection from '@ui/InfiniteCarouselSection';
 import IntegrationSection from '@ui/IntegrationSection';
-
+import { HugeiconsIcon } from '@hugeicons/react';
+import { CheckCircle } from '@hugeicons/core-free-icons';
 type ComponentResolverProps = {
   sections: HomePageSection[];
 };
@@ -62,12 +63,12 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               title={
                 <RichText
                   value={mainContent}
-                  textClassName="text-5xl md:text-7xl leading-none"
+                  textClassName="text-5xl leading-none"
                   className="[&_h1]:mb-0 [&_h1]:-mt-2"
                 />
               }
               description={subtitle}
-              video={section.video?.url}
+              // video={section.video?.url}
               mobileBackgroundImage={
                 mobileBackgroundImage
                   ? generateSanityImageUrl(mobileBackgroundImage)
@@ -77,7 +78,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               button={
                 ctaButton ? (
                   <Button
-                    className="font-extrabold p-5 text-black"
+                    className="font-extrabold p-5 text-black max-w-60"
                     size="lg"
                     onClick={() => navigateToLink(ctaButton.href || '', router)}
                   >
@@ -110,14 +111,23 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
             <DuplexSection
               id="integraciones"
               key={sectionKey}
-              tag={<Tag text={section.tag || ''} variant="outline" />}
+              tag={
+                <Tag text={section.tag || ''} variant="outline" className="text-black" />
+              }
               title={<RichText value={section.title} />}
-              textSection={<RichText value={section.textContent} />}
+              textSection={
+                <RichText
+                  value={section.textContent}
+                  bulletsIcon={
+                    <HugeiconsIcon icon={CheckCircle} className="text-black" />
+                  }
+                />
+              }
               images={section.images?.map((img) => generateSanityImageUrl(img)) || []}
               ctaButton={
                 section.ctaButton ? (
                   <Button
-                    className="font-extrabold p-5 text-black"
+                    className="font-extrabold p-5 text-primary bg-background"
                     size="lg"
                     onClick={() => navigateToLink(section.ctaButton?.href || '', router)}
                   >
