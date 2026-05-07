@@ -84,10 +84,10 @@ function Center({ mainImage }: { mainImage?: string }) {
     <div
       style={{
         position: 'absolute',
-        left: CX - 75,
-        top: CY - 75,
-        width: 150,
-        height: 150,
+        left: CX - 90,
+        top: CY - 90,
+        width: 180,
+        height: 180,
         borderRadius: '50%',
         background:
           'radial-gradient(circle at 38% 38%, var(--color-primary), var(--color-primary) 1px, transparent 99%)',
@@ -181,10 +181,10 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
           className="orbit-pulse"
           style={
             {
-              width: 150 + i * 44,
-              height: 150 + i * 44,
-              top: CY - 75 - i * 22,
-              left: CX -75 - i * 22,
+              width: 180 + i * 44,
+              height: 180 + i * 44,
+              top: CY - 90 - i * 22,
+              left: CX -90 - i * 22,
               '--orbit-delay': `${(i * 0.8).toFixed(1)}s`,
             } as React.CSSProperties
           }
