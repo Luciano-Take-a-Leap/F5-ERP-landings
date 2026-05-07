@@ -32,7 +32,7 @@ function DuplexSection({
         <Image
           src={images[0]}
           alt={`Image for ${title}`}
-          className="rounded-lg object-cover"
+          className="rounded-2xl object-cover"
           fill
         />
       </div>
@@ -51,7 +51,7 @@ function DuplexSection({
                   <Image
                     src={src}
                     alt={`${title} - image ${index + 1}`}
-                    className="rounded-lg object-cover"
+                    className="rounded-2xl object-cover"
                     fill
                   />
                 </CardContent>
@@ -65,28 +65,35 @@ function DuplexSection({
   const TextBlock = () => (
     <div className="flex flex-col gap-4 md:max-w-[70%]">
       {textSection}
-      {ctaButton && <div className='mt-6'>{ctaButton}</div>}
+      {ctaButton && <div className="mt-6">{ctaButton}</div>}
     </div>
   );
 
   return (
-    <section className="w-full py-10 overflow-hidden" id={id}>
-      {tag}
-      <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
-        {title}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {textFirst ? (
-          <>
-            <TextBlock />
-            <ImageBlock />
-          </>
-        ) : (
-          <>
-            <ImageBlock />
-            <TextBlock />
-          </>
-        )}
+    <section
+      className="w-full flex flex-col justify-center items-center py-10 overflow-hidden relative"
+      id={id}
+    >
+      <div className='bg-primary/75 absolute inset-0 -z-10'/>
+      <div className="noise-filter absolute inset-0 -z-10" />
+      <div className="max-w-7xl">
+        {tag}
+        <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
+          {title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {textFirst ? (
+            <>
+              <TextBlock />
+              <ImageBlock />
+            </>
+          ) : (
+            <>
+              <ImageBlock />
+              <TextBlock />
+            </>
+          )}
+        </div>
       </div>
     </section>
   );

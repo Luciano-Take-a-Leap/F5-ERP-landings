@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Card, { CardProps }  from "./Card";
+import * as React from 'react';
+import Card, { CardProps } from './Card';
 
 interface CardSectionProps {
   tag: React.ReactNode;
@@ -11,23 +11,17 @@ interface CardSectionProps {
   id?: string;
 }
 
-const CardSection: React.FC<CardSectionProps> = ({
-  tag,
-  title,
-  subtitle,
-  cards,
-  id,
-}) => {
+const CardSection: React.FC<CardSectionProps> = ({ tag, title, subtitle, cards, id }) => {
   return (
-    <section className="w-full py-10" id={id}>
+    <section className="w-full max-w-7xl py-10" id={id}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-14">
-            <h3>{tag}</h3>
+          <h3>{tag}</h3>
           <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white md:text-4xl">
             {title}
           </h2>
 
-          <p className="mt-4 max-w-[3000px] text-sm text-zinc-400">
+          <p className="mt-4 max-w-[3000px] md:text-xl text-sm text-zinc-400">
             {subtitle}
           </p>
         </div>

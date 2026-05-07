@@ -54,7 +54,7 @@ function CalendlySection({ title, calendlyUrl, id }: CalendlySectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-10 flex items-center justify-center text-center"
+      className="w-full max-w-7xl py-10 flex items-center justify-center text-center"
       id={id}
     >
       <div

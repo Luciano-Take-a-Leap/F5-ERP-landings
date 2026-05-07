@@ -14,23 +14,17 @@ type Orbit = {
   items?: OrbitItem[];
 };
 
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
-const S = 520;
-const CX = 260;
-const CY = 260;
+const S = 660;
+const CX = 330;
+const CY = 330;
 const IS = 52;
 
 const ORBIT_CONFIG = [
-  { r: 215, dur: '32s' },
-  { r: 162, dur: '24s' },
-  { r: 112, dur: '18s' },
+  { r: 275, dur: '32s' },
+  { r: 222, dur: '24s' },
+  { r: 172, dur: '18s' },
 ];
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 function polar(r: number, deg: number) {
   const rad = ((deg - 90) * Math.PI) / 180;
   return {
@@ -39,9 +33,6 @@ function polar(r: number, deg: number) {
   };
 }
 
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
 function ItemIcon({ item, size = IS }: { item: OrbitItem; size?: number }) {
   return (
     <div
@@ -125,7 +116,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
 
   return (
     <div style={{ position: 'relative', width: S, height: S }}>
-      {/* SVG: fondo y anillos guía */}
+      {/* SVG: background and guide rings */}
       <svg style={{ position: 'absolute', inset: 0 }} width={S} height={S}>
         <rect width={S} height={S} />
         <circle cx={CX} cy={CY} r={260} fill="url(#orb-rg)" />
@@ -143,7 +134,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
         ))}
       </svg>
 
-      {/* Anillos orbitales */}
+      {/* Orbital rings */}
       {rings.map((ring, ri) => {
         const isCCW = ring.orbit.direction?.includes('counterclockwise');
         const spinAnim = isCCW ? 'ccw' : 'cw';
@@ -183,7 +174,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
         );
       })}
 
-      {/* Pulso del centro */}
+      {/* Pulse */}
       {[0, 1, 2].map((i) => (
         <div
           key={i}
@@ -235,7 +226,8 @@ export default function IntegrationSection({
   if (!data?.length) return null;
 
   return (
-    <div
+    <section
+      className="w-full max-w-7xl"
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -246,7 +238,7 @@ export default function IntegrationSection({
         width: '100%',
       }}
     >
-      <h2 className="text-2xl font-semibold tracking-tight mb-2">{title}</h2>
+      <h2 className="text-4xl font-extrabold tracking-tight my-6 text-center">{title}</h2>
       <div
         ref={wrapperRef}
         style={{
@@ -272,6 +264,6 @@ export default function IntegrationSection({
           <OrbitalCanvas orbits={data} mainImage={mainImage} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -22,6 +22,7 @@ interface RichTextProps {
   value?: TRichText;
   className?: string;
   textClassName?: string;
+  bulletsIcon?: ReactNode;
 }
 
 const CustomLink = ({
@@ -157,6 +158,7 @@ export default function RichText({
   value,
   className = '',
   textClassName = '',
+  bulletsIcon,
 }: RichTextProps) {
   if (!value || !Array.isArray(value)) {
     return null;
@@ -260,40 +262,40 @@ export default function RichText({
       },
     },
     list: {
-      bullet: ({ children }) => {
-        return (
-          <ul
-            className={cn(
-              'list-disc list-inside space-y-2 font-inter text-white',
-              textClassName
-            )}
-          >
-            {children}
-          </ul>
-        );
-      },
-      number: ({ children }) => {
-        return (
-          <ol
-            className={cn(
-              'list-decimal list-inside space-y-2 font-inter text-white',
-              textClassName
-            )}
-          >
-            {children}
-          </ol>
-        );
-      },
+      bullet: ({ children }) => (
+        <ul className={cn('list-none space-y-2 font-inter text-white', textClassName)}>
+          {children}
+        </ul>
+      ),
+      number: ({ children }) => (
+        <ol className={cn('list-none space-y-2 font-inter text-white', textClassName)}>
+          {children}
+        </ol>
+      ),
     },
     listItem: {
       bullet: ({ children }) => (
-        <li className={cn('leading-relaxed font-inter text-white', textClassName)}>
-          {children}
+        <li
+          className={cn(
+            'flex items-start gap-2 leading-relaxed font-inter text-white',
+            textClassName
+          )}
+        >
+          <span className="mt-1 shrink-0">
+            {bulletsIcon ?? <span className="text-lg leading-none">•</span>}
+          </span>
+          <span>{children}</span>
         </li>
       ),
-      number: ({ children }) => (
-        <li className={cn('leading-relaxed font-inter text-white', textClassName)}>
-          {children}
+      number: ({ children, index }) => (
+        <li
+          className={cn(
+            'flex items-start gap-2 leading-relaxed font-inter text-white',
+            textClassName
+          )}
+        >
+          <span className="mt-1 shrink-0 tabular-nums">{(index ?? 0) + 1}.</span>
+          <span>{children}</span>
         </li>
       ),
     },
