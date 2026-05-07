@@ -13,8 +13,8 @@ interface CardSectionProps {
 
 const CardSection: React.FC<CardSectionProps> = ({ tag, title, subtitle, cards, id }) => {
   return (
-    <section className="w-full max-w-7xl py-10" id={id}>
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full py-10" id={id}>
+      <div className="mx-auto max-w-7xl px-6 md:px-0 ">
         <div className="mb-14">
           <h3>{tag}</h3>
           <h2 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white md:text-4xl">

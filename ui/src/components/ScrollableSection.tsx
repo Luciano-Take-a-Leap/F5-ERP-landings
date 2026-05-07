@@ -61,7 +61,7 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
   const currentImage = subsections[visibleIndex]?.image;
 
   return (
-    <section className="w-full max-w-7xl py-10 relative" id={id}>
+    <section className="w-full max-w-7xl px-6 md:px-0 py-10 relative" id={id}>
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{

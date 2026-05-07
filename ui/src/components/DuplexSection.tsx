@@ -76,7 +76,7 @@ function DuplexSection({
     >
       <div className='bg-primary/75 absolute inset-0 -z-10'/>
       <div className="noise-filter absolute inset-0 -z-10" />
-      <div className="max-w-7xl">
+      <div className="max-w-7xl px-6 md:px-0 ">
         {tag}
         <h2 className="text-4xl font-extrabold tracking-tight mt-6 mb-12 max-w-2xl">
           {title}

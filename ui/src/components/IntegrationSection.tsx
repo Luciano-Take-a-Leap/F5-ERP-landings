@@ -227,7 +227,7 @@ export default function IntegrationSection({
 
   return (
     <section
-      className="w-full max-w-7xl"
+      className="w-full max-w-7xl px-6 md:px-0 "
       style={{
         display: 'flex',
         flexDirection: 'column',
