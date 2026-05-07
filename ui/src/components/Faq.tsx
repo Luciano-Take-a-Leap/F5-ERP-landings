@@ -20,14 +20,11 @@ const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
 
   return (
     <section className="w-full py-10 relative" id={id}>
-      <div className="bg-primary/75 absolute inset-0 -z-10" />
-      <div className="noise-filter absolute inset-0 -z-10" />
       <div className="max-w-7xl flex items-center justify-center flex-col mx-auto w-full px-4">
         <div className="mx-auto w-full max-w-6xl px-4">
           <h2 className="mb-20 text-center text-4xl font-bold tracking-tight md:text-5xl">
             {title}
           </h2>
-
           <div className="flex flex-col gap-4">
             {items.map((item, index) => {
               const isOpen = open === index;
@@ -44,7 +41,6 @@ const Faq: React.FC<FaqProps> = ({ title, items, id }) => {
                     <span className="text-lg font-bold text-white md:text-1xl">
                       {item.question}
                     </span>
-
                     <span className="shrink-0 text-2xl leading-none text-primary">
                       {isOpen ? '−' : '+'}
                     </span>

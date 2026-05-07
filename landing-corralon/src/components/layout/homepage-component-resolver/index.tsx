@@ -63,8 +63,8 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               title={
                 <RichText
                   value={mainContent}
-                  textClassName="text-5xl leading-none"
-                  className="[&_h1]:mb-0 [&_h1]:-mt-2"
+                  textClassName="text-5xl md:text-6xl leading-none"
+                  className="[&_h1]:-mb-1 [&_h1]:-mt-1 md:[&_h1]:mb-0 md:[&_h1]:-mt-3"
                 />
               }
               description={subtitle}
@@ -217,7 +217,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
               id="soluciones"
               key={sectionKey}
               tag={<Tag text={section.tag || ''} variant="outline" />}
-              title={<RichText value={section.title} />}
+              title={<RichText value={section.title} textClassName='leading-none'/>}
               subsections={
                 section.subsections?.map((subsect) => ({
                   title: subsect.title || '',

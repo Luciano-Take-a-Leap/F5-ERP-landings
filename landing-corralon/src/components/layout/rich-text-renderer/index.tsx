@@ -168,7 +168,7 @@ export default function RichText({
     block: {
       normal: ({ children }) => {
         return (
-          <p className={cn('leading-relaxed font-inter text-white', textClassName)}>
+          <p className={cn('font-inter text-white', textClassName)}>
             {children}
           </p>
         );
@@ -176,7 +176,7 @@ export default function RichText({
       h1: ({ children }) => {
         return (
           <h1
-            className={cn('text-4xl leading-tight font-inter text-white', textClassName)}
+            className={cn('text-4xl font-inter text-white', textClassName)}
           >
             {children}
           </h1>
@@ -185,7 +185,7 @@ export default function RichText({
       h2: ({ children }) => {
         return (
           <h2
-            className={cn('text-3xl leading-tight font-inter text-white', textClassName)}
+            className={cn('text-3xl font-inter text-white', textClassName)}
           >
             {children}
           </h2>
@@ -194,7 +194,7 @@ export default function RichText({
       h3: ({ children }) => {
         return (
           <h3
-            className={cn('text-2xl leading-tight font-inter text-white', textClassName)}
+            className={cn('text-2xl font-inter text-white', textClassName)}
           >
             {children}
           </h3>
@@ -204,7 +204,7 @@ export default function RichText({
         return (
           <h4
             className={cn(
-              'text-xl font-normal leading-tight font-inter text-white',
+              'text-xl font-normal font-inter text-white',
               textClassName
             )}
           >
@@ -216,7 +216,7 @@ export default function RichText({
         return (
           <h5
             className={cn(
-              'text-lg font-normal leading-tight font-inter text-white',
+              'text-lg font-normal font-inter text-white',
               textClassName
             )}
           >
@@ -228,7 +228,7 @@ export default function RichText({
         return (
           <h6
             className={cn(
-              'text-base font-normal leading-tight font-inter text-white',
+              'text-base font-normal font-inter text-white',
               textClassName
             )}
           >
