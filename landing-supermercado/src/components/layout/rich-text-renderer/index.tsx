@@ -167,59 +167,39 @@ export default function RichText({
   const createComponents = (): Partial<PortableTextReactComponents> => ({
     block: {
       normal: ({ children }) => {
-        return (
-          <p className={cn('leading-relaxed font-inter text-white', textClassName)}>
-            {children}
-          </p>
-        );
+        return <p className={cn('font-inter text-white', textClassName)}>{children}</p>;
       },
       h1: ({ children }) => {
         return (
-          <h1
-            className={cn('text-4xl leading-tight font-inter text-white', textClassName)}
-          >
+          <h1 className={cn('text-4xl font-inter text-white', textClassName)}>
             {children}
           </h1>
         );
       },
       h2: ({ children }) => {
         return (
-          <h2
-            className={cn('text-3xl leading-tight font-inter text-white', textClassName)}
-          >
+          <h2 className={cn('text-3xl font-inter text-white', textClassName)}>
             {children}
           </h2>
         );
       },
       h3: ({ children }) => {
         return (
-          <h3
-            className={cn('text-2xl leading-tight font-inter text-white', textClassName)}
-          >
+          <h3 className={cn('text-2xl font-inter text-white', textClassName)}>
             {children}
           </h3>
         );
       },
       h4: ({ children }) => {
         return (
-          <h4
-            className={cn(
-              'text-xl font-normal leading-tight font-inter text-white',
-              textClassName
-            )}
-          >
+          <h4 className={cn('text-xl font-normal font-inter text-white', textClassName)}>
             {children}
           </h4>
         );
       },
       h5: ({ children }) => {
         return (
-          <h5
-            className={cn(
-              'text-lg font-normal leading-tight font-inter text-white',
-              textClassName
-            )}
-          >
+          <h5 className={cn('text-lg font-normal font-inter text-white', textClassName)}>
             {children}
           </h5>
         );
@@ -227,10 +207,7 @@ export default function RichText({
       h6: ({ children }) => {
         return (
           <h6
-            className={cn(
-              'text-base font-normal leading-tight font-inter text-white',
-              textClassName
-            )}
+            className={cn('text-base font-normal font-inter text-white', textClassName)}
           >
             {children}
           </h6>
