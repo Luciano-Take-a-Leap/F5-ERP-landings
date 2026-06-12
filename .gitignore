@@ -52,3 +52,9 @@ coverage/
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+# Turbo daemon/cache
+.turbo/
+
+# Nested node_modules (monorepo)
+**/node_modules/

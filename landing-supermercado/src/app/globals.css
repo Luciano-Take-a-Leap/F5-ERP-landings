@@ -46,7 +46,7 @@ body {
 }
 
 .hero-gradient {
-  background: linear-gradient(to bottom, #010c08e6 0%, #010c08e6 75%, var(--background));
+  background: linear-gradient(to bottom, #010c08b3 0%, #010c08e6 75%, var(--background));
 }
 
 .noise-filter::before {
