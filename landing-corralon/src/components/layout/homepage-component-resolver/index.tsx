@@ -222,9 +222,7 @@ export default function ComponentResolver({ sections }: ComponentResolverProps) 
                 section.subsections?.map((subsect) => ({
                   title: subsect.title || '',
                   description: <RichText value={subsect.content} />,
-                  image: subsect.image
-                    ? generateSanityImageUrl(subsect.image)
-                    : undefined,
+                  images: subsect.images?.map((img) => generateSanityImageUrl(img)) || [],
                 })) || []
               }
             />

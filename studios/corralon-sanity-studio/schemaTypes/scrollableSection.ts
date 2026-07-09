@@ -41,13 +41,18 @@ const TScrollableSection = defineType({
               validation: (Rule) => Rule.required(),
             },
             {
-              name: 'image',
-              title: 'Imágen',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-              validation: (Rule) => Rule.required(),
+              name: 'images',
+              title: 'Imágenes',
+              type: 'array',
+              of: [
+                {
+                  type: 'image',
+                  options: {
+                    hotspot: true,
+                  },
+                },
+              ],
+              validation: (Rule) => Rule.min(1).error('Debes añadir al menos una imagen.'),
             },
           ],
         },

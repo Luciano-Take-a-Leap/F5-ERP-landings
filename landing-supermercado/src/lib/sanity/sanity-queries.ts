@@ -155,7 +155,7 @@ export const scrollableSectionQuery = groq`
     subsections[]{
       title,
       content,
-      image{
+      images[]{
         asset->{url},
         alt
       },
@@ -325,7 +325,7 @@ export const homePageSectionsQuery = groq`
         subsections[]{
           title,
           content,
-          image{
+          images[]{
             asset->{url},
             alt
           },
