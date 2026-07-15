@@ -43,7 +43,7 @@ function ItemIcon({ item, size = IS }: { item: OrbitItem; size?: number }) {
         borderRadius: '50%',
         overflow: 'hidden',
         userSelect: 'none',
-        background: 'rgba(255,255,255,0.05)',
+        background: 'rgba(255,255,255,1)',
         flexShrink: 0,
         display: 'flex',
         alignItems: 'center',
