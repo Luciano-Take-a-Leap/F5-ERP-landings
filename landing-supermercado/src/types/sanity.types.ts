@@ -231,7 +231,7 @@ export type ScrollableSection = {
   subsections?: Array<{
     title?: string
     content?: RichText
-    image?: {
+    images?: Array<{
       asset?: {
         _ref: string
         _type: 'reference'
@@ -242,7 +242,8 @@ export type ScrollableSection = {
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
       _type: 'image'
-    }
+      _key: string
+    }>
     _type: 'subsection'
     _key: string
   }>

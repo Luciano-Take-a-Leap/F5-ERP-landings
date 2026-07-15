@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import ImageCarousel from './ImageCarousel';
 
 interface ScrollableSectionProps {
   tag: React.ReactNode;
@@ -9,7 +9,7 @@ interface ScrollableSectionProps {
   subsections: {
     title: string;
     description: React.ReactNode;
-    image?: string;
+    images?: string[];
   }[];
   id?: string;
 }
@@ -58,7 +58,7 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
     return () => window.removeEventListener('scroll', handleScroll);
   }, [subsections]);
 
-  const currentImage = subsections[visibleIndex]?.image;
+  const currentImages = subsections[visibleIndex]?.images ?? [];
 
   return (
     <section className="w-full max-w-7xl px-6 md:px-0 py-10 relative" id={id}>
@@ -91,13 +91,15 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
               <div className="max-w-prose text-base leading-relaxed">
                 {subsection.description}
               </div>
-              {subsection.image && (
-                <div className="relative w-full h-56 lg:hidden">
-                  <Image
-                    src={subsection.image}
-                    fill
+              {subsection.images && subsection.images.length > 0 && (
+                <div className="w-full h-56 lg:hidden">
+                  <ImageCarousel
+                    images={subsection.images}
                     alt={subsection.title}
-                    className="rounded-xl object-cover"
+                    className="h-full w-full"
+                    singleImageClassName="relative w-full h-full"
+                    contentClassName="relative h-full"
+                    imageClassName="rounded-xl object-cover"
                   />
                 </div>
               )}
@@ -107,27 +109,28 @@ const ScrollableSection = ({ tag, title, subsections, id }: ScrollableSectionPro
 
         <div className="hidden w-[45%] lg:block">
           <div className="sticky top-[20vh] w-full h-[50vh]">
-            {currentImage ? (
-              <Image
-                key={visibleIndex}
-                src={currentImage}
-                fill
-                alt={subsections[visibleIndex]?.title ?? ''}
-                className={[
-                  'h-full w-full rounded-2xl object-cover shadow-xl transition-opacity duration-500',
-                  fading ? 'opacity-0' : 'opacity-100',
-                ].join(' ')}
-              />
-            ) : (
-              <div
-                className={[
-                  'flex h-full w-full items-center justify-center rounded-2xl bg-muted shadow-inner transition-opacity duration-500',
-                  fading ? 'opacity-0' : 'opacity-100',
-                ].join(' ')}
-              >
-                <span className="text-sm text-muted-foreground">No hay imagen</span>
-              </div>
-            )}
+            <div
+              className={[
+                'h-full w-full transition-opacity duration-500',
+                fading ? 'opacity-0' : 'opacity-100',
+              ].join(' ')}
+            >
+              {currentImages.length > 0 ? (
+                <ImageCarousel
+                  key={visibleIndex}
+                  images={currentImages}
+                  alt={subsections[visibleIndex]?.title ?? ''}
+                  className="h-full w-full"
+                  singleImageClassName="relative w-full h-full"
+                  contentClassName="relative h-full"
+                  imageClassName="rounded-2xl shadow-xl object-contain"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center rounded-2xl bg-muted shadow-inner">
+                  <span className="text-sm text-muted-foreground">No hay imagen</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

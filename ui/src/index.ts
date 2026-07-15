@@ -10,6 +10,7 @@ export * from './components/ui/accordion';
 export * from './components/ui/card';
 export * from './components/ui/carousel';
 export * from './components/DuplexSection';
+export * from './components/ImageCarousel';
 export * from './components/Header';
 export * from './components/CalendlySection';
 export * from './components/Footer';

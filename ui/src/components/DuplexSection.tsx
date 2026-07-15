@@ -1,9 +1,5 @@
 'use client';
-import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
-import { useRef } from 'react';
-import { Card, CardContent } from './ui/card';
+import ImageCarousel from './ImageCarousel';
 
 interface DuplexSectionProps {
   tag: React.ReactNode;
@@ -24,43 +20,9 @@ function DuplexSection({
   textFirst = true,
   id,
 }: DuplexSectionProps) {
-  const plugin = useRef(Autoplay({ delay: 3500, stopOnInteraction: true }));
-
-  const ImageBlock = () =>
-    images?.length === 1 ? (
-      <div className="relative w-full h-full min-h-64">
-        <Image
-          src={images[0]}
-          alt={`Image for ${title}`}
-          className="rounded-2xl object-cover"
-          fill
-        />
-      </div>
-    ) : (
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-      >
-        <CarouselContent>
-          {images.map((src, index) => (
-            <CarouselItem key={index}>
-              <Card className="bg-transparent border-none shadow-none outline-none">
-                <CardContent className="flex aspect-video items-center justify-center relative">
-                  <Image
-                    src={src}
-                    alt={`${title} - image ${index + 1}`}
-                    className="rounded-2xl object-cover"
-                    fill
-                  />
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-    );
+  const ImageBlock = () => (
+    <ImageCarousel images={images || []} alt={`Image for ${title}`} imageClassName='object-contain' />
+  );
 
   const TextBlock = () => (
     <div className="flex flex-col gap-4 md:max-w-[70%]">
