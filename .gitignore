@@ -58,3 +58,9 @@ coverage/
 
 # Nested node_modules (monorepo)
 **/node_modules/
+
+# This monorepo uses pnpm exclusively (see pnpm-workspace.yaml / packageManager).
+# npm/yarn lockfiles break `workspace:*` deps if a package manager other than
+# pnpm gets auto-detected (e.g. by Vercel), so keep them out of version control.
+package-lock.json
+yarn.lock
