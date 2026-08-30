@@ -14,26 +14,56 @@ type Orbit = {
   items?: OrbitItem[];
 };
 
-const S = 660;
-const CX = 330;
-const CY = 330;
-const IS = 52;
+type CanvasConfig = {
+  S: number;
+  CX: number;
+  CY: number;
+  IS: number;
+  glowR: number;
+  orbits: { r: number; dur: string }[];
+};
 
-const ORBIT_CONFIG = [
-  { r: 275, dur: '32s' },
-  { r: 222, dur: '24s' },
-  { r: 172, dur: '18s' },
-];
+// Mobile keeps the original (smaller) canvas/orbit sizing so nothing changes
+// on small screens; desktop uses the larger canvas so outer-orbit icons
+// don't get clipped.
+const MOBILE_CONFIG: CanvasConfig = {
+  S: 660,
+  CX: 330,
+  CY: 330,
+  IS: 52,
+  glowR: 260,
+  orbits: [
+    { r: 275, dur: '32s' },
+    { r: 222, dur: '24s' },
+    { r: 172, dur: '18s' },
+  ],
+};
 
-function polar(r: number, deg: number) {
+const DESKTOP_CONFIG: CanvasConfig = {
+  S: 800,
+  CX: 400,
+  CY: 400,
+  IS: 52,
+  glowR: 315,
+  orbits: [
+    { r: 350, dur: '32s' },
+    { r: 275, dur: '24s' },
+    { r: 200, dur: '18s' },
+  ],
+};
+
+// Matches the `md` breakpoint already used by the section wrapper below.
+const MOBILE_BREAKPOINT = 768;
+
+function polar(cx: number, cy: number, r: number, deg: number) {
   const rad = ((deg - 90) * Math.PI) / 180;
   return {
-    x: +(CX + r * Math.cos(rad)).toFixed(1),
-    y: +(CY + r * Math.sin(rad)).toFixed(1),
+    x: +(cx + r * Math.cos(rad)).toFixed(1),
+    y: +(cy + r * Math.sin(rad)).toFixed(1),
   };
 }
 
-function ItemIcon({ item, size = IS }: { item: OrbitItem; size?: number }) {
+function ItemIcon({ item, size }: { item: OrbitItem; size: number }) {
   return (
     <div
       title={item?.altText}
@@ -79,13 +109,13 @@ function ItemIcon({ item, size = IS }: { item: OrbitItem; size?: number }) {
   );
 }
 
-function Center({ mainImage }: { mainImage?: string }) {
+function Center({ mainImage, cx, cy }: { mainImage?: string; cx: number; cy: number }) {
   return (
     <div
       style={{
         position: 'absolute',
-        left: CX - 90,
-        top: CY - 90,
+        left: cx - 90,
+        top: cy - 90,
         width: 180,
         height: 180,
         borderRadius: '50%',
@@ -108,9 +138,18 @@ function Center({ mainImage }: { mainImage?: string }) {
   );
 }
 
-function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: string }) {
-  const rings = orbits.slice(0, ORBIT_CONFIG.length).map((orbit, i) => ({
-    ...ORBIT_CONFIG[i],
+function OrbitalCanvas({
+  orbits,
+  mainImage,
+  config,
+}: {
+  orbits: Orbit[];
+  mainImage?: string;
+  config: CanvasConfig;
+}) {
+  const { S, CX, CY, IS, glowR } = config;
+  const rings = orbits.slice(0, config.orbits.length).map((orbit, i) => ({
+    ...config.orbits[i],
     orbit,
   }));
 
@@ -119,7 +158,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
       {/* SVG: background and guide rings */}
       <svg style={{ position: 'absolute', inset: 0 }} width={S} height={S}>
         <rect width={S} height={S} />
-        <circle cx={CX} cy={CY} r={260} fill="url(#orb-rg)" />
+        <circle cx={CX} cy={CY} r={glowR} fill="url(#orb-rg)" />
         {rings.map((rg, i) => (
           <circle
             key={i}
@@ -152,7 +191,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
             }
           >
             {ring.orbit.items?.map((item, ii) => {
-              const pos = polar(ring.r, (360 / (ring.orbit.items?.length || 1)) * ii);
+              const pos = polar(CX, CY, ring.r, (360 / (ring.orbit.items?.length || 1)) * ii);
               return (
                 <div
                   key={item.key}
@@ -166,7 +205,7 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
                     } as React.CSSProperties
                   }
                 >
-                  <ItemIcon item={item} />
+                  <ItemIcon item={item} size={IS} />
                 </div>
               );
             })}
@@ -184,14 +223,14 @@ function OrbitalCanvas({ orbits, mainImage }: { orbits: Orbit[]; mainImage?: str
               width: 180 + i * 44,
               height: 180 + i * 44,
               top: CY - 90 - i * 22,
-              left: CX -90 - i * 22,
+              left: CX - 90 - i * 22,
               '--orbit-delay': `${(i * 0.8).toFixed(1)}s`,
             } as React.CSSProperties
           }
         />
       ))}
 
-      <Center mainImage={mainImage} />
+      <Center mainImage={mainImage} cx={CX} cy={CY} />
     </div>
   );
 }
@@ -208,6 +247,7 @@ export default function IntegrationSection({
   mainImage,
 }: IntegrationSectionProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const [config, setConfig] = useState<CanvasConfig>(DESKTOP_CONFIG);
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
@@ -216,7 +256,9 @@ export default function IntegrationSection({
 
     const ro = new ResizeObserver(([entry]) => {
       const available = entry.contentRect.width;
-      setScale(Math.min(1, available / S));
+      const cfg = available < MOBILE_BREAKPOINT ? MOBILE_CONFIG : DESKTOP_CONFIG;
+      setConfig(cfg);
+      setScale(Math.min(1, available / cfg.S));
     });
 
     ro.observe(el);
@@ -243,8 +285,8 @@ export default function IntegrationSection({
         ref={wrapperRef}
         style={{
           width: '100%',
-          maxWidth: S,
-          height: S * scale,
+          maxWidth: config.S,
+          height: config.S * scale,
           overflow: 'hidden',
           display: 'flex',
           justifyContent: 'center',
@@ -254,14 +296,14 @@ export default function IntegrationSection({
           style={{
             borderRadius: 20,
             overflow: 'hidden',
-            width: S,
-            height: S,
+            width: config.S,
+            height: config.S,
             flexShrink: 0,
             transform: `scale(${scale})`,
             transformOrigin: 'top center',
           }}
         >
-          <OrbitalCanvas orbits={data} mainImage={mainImage} />
+          <OrbitalCanvas orbits={data} mainImage={mainImage} config={config} />
         </div>
       </div>
     </section>
