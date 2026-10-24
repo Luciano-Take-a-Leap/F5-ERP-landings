@@ -12,7 +12,8 @@ export const sanityClient = createClient({
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
   stega: {
-    enabled: true,
+    // Stega appends invisible unicode chars to strings; some fonts/devices render them as boxes.
+    enabled: process.env.NODE_ENV !== 'production',
     studioUrl: process.env.NEXT_PUBLIC_STUDIO_URL || 'http://localhost:3333' ,
   },
 });
